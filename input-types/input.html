@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Input Types</title>
+</head>
+
+<body>
+   <h1>All the HTML5 Input Types</h1>
+   <form id="input-form" action="">
+      <p>button: <input type="button" name="buttonInput" value="Press me" id="button" onclick="getValue(this)">
+         <span id="buttonInputVal"></span>
+      </p>
+      <p>checkbox: <input type="checkbox" name="checkboxInput" id="checkbox" onchange="getValue(this)">
+         <span id="checkboxInputVal"></span>
+      </p>
+      <p>color: <input type="color" onchange="getValue(this)" name="colorInput" id="colorpicker">
+         <span id="colorInputVal"></span>
+      </p>
+      <p>date: <input type="date" onchange="getValue(this)" name="dateInput" id="date">
+         <span id="dateInputVal"></span>
+      </p>
+      <p>datetime-local: <input type="datetime-local" onchange="getValue(this)" name="datetime-localInput"
+            id="datetime">
+         <span id="datetime-localInputVal"></span>
+      </p>
+      <p>email: <input type="email" onchange="getValue(this)" name="emailInput" id="email">
+         <span id="emailInputVal"></span>
+      </p>
+      <p>file: <input type="file" onchange="getValue(this)" name="fileInput" accept="image/png, image/jpeg" id="file">
+         <span id="fileInputVal"></span>
+      </p>
+      <p>hidden: <input type="hidden" onchange="getValue(this)" name="hiddenInput">
+         <span id="hiddenInputVal"></span>
+      </p>
+         <span id="imageInputVal"></span>
+      </p>
+      <p>month: <input type="month" onchange="getValue(this)" name="monthInput" id="month">
+         <span id="monthInputVal"></span>
+      </p>
+      <p>number: <input type="number" min="0" max="100" onchange="getValue(this)" name="numberInput" id="number">
+         <span id="numberInputVal"></span>
+      </p>
+      <p>password: <input type="password" onchange="getValue(this)" name="passwordInput" id="password">
+         <span id="passwordInputVal"></span>
+      </p>
+      <p>radio: <input type="radio" onchange="getValue(this)" name="radioInput" id="radio">
+         <span id="radioInputVal"></span>
+      </p>
+      <p>range: <input type="range" min="0" max="100" onchange="getValue(this)" name="rangeInput" id="range">
+         <span id="rangeInputVal"></span>
+      </p>
+      <p>search: <input type="search" onchange="getValue(this)" name="searchInput" id="search">
+         <span id="searchInputVal"></span>
+      </p>
+      <p>tel: <input type="tel" onchange="getValue(this)" name="telInput" id="tel">
+         <span id="telInputVal"></span>
+      </p>
+      <p>text: <input type="text" onchange="getValue(this)" name="textInput" id="text">
+         <span id="textInputVal"></span>
+      </p>
+      <span id="textareaInputVal"></span></p>
+      <p>time: <input type="time" onchange="getValue(this)" name="timeInput" id="time">
+         <span id="timeInputVal"></span>
+      </p>
+      <p>url: <input type="url" onchange="getValue(this)" name="urlInput" id="url">
+         <span id="urlInputVal"></span>
+      </p>
+      <p>week: <input type="week" onchange="getValue(this)" name="weekInput" id="week">
+         <span id="weekInputVal"></span>
+      </p>
+      <p>reset: <input type="reset" name="resetInput" value="reset">
+      </p>
+      <p>image: <input type="image" name="imageInput" src="img/button.png" alt="image">
+      <p>submit: <input type="submit" name="submitInput" value="submit">
+      </p>
+   </form>
+</body>
+
+<script>
+   function getValue(target) {
+      // get the span associated with this element
+      // and put the element's value in the span's innerHTML:
+      document.getElementById(elt + "Val").innerHTML = target.value;
+   }
+</script>
+
+</html>
