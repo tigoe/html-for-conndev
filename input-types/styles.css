@@ -1,0 +1,16 @@
+div {
+  height: 32px;
+}
+/* image input needs its own height because of the image */
+#imageInput {
+  height: 48px;
+}
+input {
+  position: sticky;
+  left: 120px;
+}
+
+span {
+  position: sticky;
+  left: 400px;
+}

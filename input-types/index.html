@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <link rel="stylesheet" href="styles.css">
+   <script src="script.js"></script>
+   <title>Input Types</title>
+</head>
+
+<body>
+   <h1>All the HTML5 Input Types</h1>
+   <p>This page shows all the HTML5 input types. When you change any of them, its value will fill into a span to the
+      right of the input</p>
+   <p>The submit button will clear the form.</p>
+   <form id="input-form" action="" method="post">
+      <div>button: <input type="button" value="Click here" onclick="getValue(this);">
+         <span id="buttonVal"></span>
+      </div>
+      <div>checkbox: <input type="checkbox" onchange="getValue(this);">
+         <span id="checkboxVal"></span>
+      </div>
+      <div>color: <input type="color" value="#000000" onchange="getValue(this);">
+         <span id="colorVal"></span>
+      </div>
+      <div>date: <input type="date" onchange="getValue(this);">
+         <span id="dateVal"></span>
+      </div>
+      <div>datetime-local: <input type="datetime-local" onchange="getValue(this)" id="datetime">
+         <span id="datetime-localVal"></span>
+      </div>
+      <div>email: <input type="email" onchange="getValue(this)" id="email">
+         <span id="emailVal"></span>
+      </div>
+      <div>file: <input type="file" onchange="getValue(this)" id="file">
+         <span id="fileVal"></span>
+      </div>
+      <div>hidden: <input type="hidden" onchange="getValue(this)">
+         <span id="hiddenVal"></span>
+      </div>
+      <div>month: <input type="month" onchange="getValue(this)" id="month">
+         <span id="monthVal"></span>
+      </div>
+      <div>number: <input type="number" min="0" max="100" onchange="getValue(this)" id="number">
+         <span id="numberVal"></span>
+      </div>
+      <div>password: <input type="password" onchange="getValue(this)" id="password">
+         <span id="passwordVal"></span>
+      </div>
+      <div>radio: <input type="radio" onchange="getValue(this)" id="radio">
+         <span id="radioVal"></span>
+      </div>
+      <div>range: <input type="range" min="0" max="100" onchange="getValue(this)" id="range">
+         <span id="rangeVal"></span>
+      </div>
+      <div>search: <input type="search" onchange="getValue(this)" id="search">
+         <span id="searchVal"></span>
+      </div>
+      <div>tel: <input type="tel" onchange="getValue(this)" id="tel">
+         <span id="telVal"></span>
+      </div>
+      <div>text: <input type="text" onchange="getValue(this)" id="text">
+         <span id="textVal"></span>
+      </div>
+      <div>time: <input type="time" onchange="getValue(this)" id="time">
+         <span id="timeVal"></span>
+      </div>
+      <div>url: <input type="url" onchange="getValue(this)" value="http://" id="url">
+         <span id="urlVal"></span>
+      </div>
+      <div>week: <input type="week" onchange="getValue(this)" id="week">
+         <span id="weekVal"></span>
+      </div>
+      <div>reset: <input type="reset" value="reset" onclick="clearValues();">
+         <span id="resetVal"></span>
+      </div>
+      <div id="imageInput">image: <input type="image" src="img/button.png" alt="image of a button" value="it's a button" onclick="getValue(this);">
+         <span id="imageVal"></span>
+      </div>
+      <div>submit: <input type="submit" onclick="getValue(this);">
+         <span id="submitVal"></span>
+      </div>
+   </form>
+</body>
+
+</html>
