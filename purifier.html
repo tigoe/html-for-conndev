@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+input {
+  position: sticky;
+  left: 120px;
+}
+
+span {
+  position: sticky;
+  left: 300px;
+}
+  </style>
+  <div id="deviceState">
+  <button id="power">Power</button><span id="onState"> on </span><br>
+  Fan speed<input type="range" min=0 max=10><span id="fanSpeed">medium</span><br>
+  Air quality: <span id="AQI">80%</span><br>
+  Last filter Change: <span id="filter">Jan 20, 2019</span>
+</div>
+<br>
+<div id="schedule">
+  Turn on at: <input type="datetime-local" ><br>
+  Turn off at: <input type="datetime-local"><br>
+</div>
+</body>
+</html>
