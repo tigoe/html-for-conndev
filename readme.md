@@ -84,14 +84,14 @@ function getValue(event) {
 
 Adding event listeners takes more typing, but it lets you keep your elements' behaviors (defined in JavaScript) separate from their properties (defined in HTML) and their styles (defined in CSS).
 
-### Client-Sidce JavaScript Structure
+### Client-Side JavaScript Structure
 
 A typical client-side JavaScript is structured like this:
 
 * define your listener functions
 * add a listener function for the page load event
 
-There's not typically a main loop, as you might be used to for C or Java; all the action happens on user-generated events. You can make some timed functions using `setInterval()` or `setTimeout()`, but these are typically less common. Here's a [plain Javascript template](template/scrupt.js). It goes with this [HTML page](template/index.html). This [style sheet](template/styles.css) is used to set the positions of the elements. 
+There's not typically a main loop, as you might be used to for C or Java; all the action happens on user-generated events. You can make some timed functions using `setInterval()` or `setTimeout()`, but these are typically less common. Here's a [plain Javascript template](template/script.js). It goes with this [HTML page](template/index.html). This [style sheet](template/styles.css) is used to set the positions of the elements. 
 
 ### Responsive Layout for Mobile Devices
 
