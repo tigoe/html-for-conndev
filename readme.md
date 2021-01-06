@@ -16,59 +16,10 @@ You can build a user interface using HTML, CSS and JavaScript and communications
 
 There are thousands of tutorials to introduce web development, so there's no need to repeat that here. The [Mozilla Developer Network](https://developer.mozilla.org/) site is a good reference. Covered below is enough information to send and receive data from devices to a web page. 
 
-A minimal browser-based interface for a connected device might include a few input elements to change the device's properties, and a few text fields to display those properties. For example, imagine a connected air purifier. It would need controls to turn the device on and off, to set the fan speed, and perhaps set a schedule for when it should turn and off next, and a few text fields to report the state of the purifier and perhaps the last time the filter was changed. If the purifier includes an air quality sensor, perhaps it will report the sensor's readings as well. The interface might look something like this (these elements don't actually do anything in this page):
-
-  <style>
-input {
-  position: sticky;
-  left: 120px;
-}
-
-span {
-  position: sticky;
-  left: 300px;
-}
-  </style>
-  <div id="deviceState">
-  <button id="power">Power</button><span id="onState"> on </span><br>
-  Fan speed<input type="range" min=0 max=10><span id="fanSpeed">medium</span><br>
-  Air quality: <span id="AQI">80%</span><br>
-  Last filter Change: <span id="filter">Jan 20, 2019</span>
-</div>
-<br>
-<div id="schedule">
-  Turn on at: <input type="datetime-local" ><br>
-  Turn off at: <input type="datetime-local"><br>
-</div>
-<br>
+A minimal browser-based interface for a connected device might include a few input elements to change the device's properties, and a few text fields to display those properties. For example, imagine a connected air purifier. It would need controls to turn the device on and off, to set the fan speed, and perhaps set a schedule for when it should turn and off next, and a few text fields to report the state of the purifier and perhaps the last time the filter was changed. If the purifier includes an air quality sensor, perhaps it will report the sensor's readings as well. The interface might look something like [this page](). 
 
 The HTML and CSS for this looks like this:
-````
-  <style>
-/* style elements are here to align the controls vertically */
-input {
-  position: sticky;
-  left: 120px;
-}
 
-span {
-  position: sticky;
-  left: 300px;
-}
-  </style>
-
-  <div id="deviceState">
-  <button id="power">Power</button><span id="onState"> on </span><br>
-  Fan speed<input type="range" min=0 max=10><span id="fanSpeed">medium</span><br>
-  Air quality: <span id="AQI">80%</span><br>
-  Last filter Change: <span id="filter">Jan 20, 2019</span>
-</div>
-<br>
-<div id="schedule">
-  Turn on at: <input type="datetime-local" ><br>
-  Turn off at: <input type="datetime-local"><br>
-</div>
-`````
 
 By using JavaScript to manipulate the elements of the page, you can make the various text elements, like the spans, responsive to the values of the inputs, like the button or the slider. You can send those values to a web server using the JavaScript `fetch()` command, or you can use other communications protocols to send the values to connected devices. 
 
