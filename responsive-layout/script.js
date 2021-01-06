@@ -1,11 +1,25 @@
 /*
   Get QR Code Script 
   Defines Gets a QR code of the page's URL from http://goqr.me/api/doc/
-  and makes it the source of an image tag in the page.
+  and makes it the source of an image tag in the page. Shows the viewport
+  size as well.
 
   created 5 Jan 2021 
   by Tom Igoe
 */
+
+function setup() {
+  // set the viewpoer width and height in the vp span:
+  document.getElementById('vp').innerHTML = window.visualViewport.width.toPrecision(6)
+    + 'x' + window.visualViewport.height.toPrecision(6);
+
+// update if the window resizes:
+  visualViewport.addEventListener('resize', function () {
+    document.getElementById('vp').innerHTML = window.visualViewport.width.toPrecision(6)
+      + 'x' + window.visualViewport.height.toPrecision(6);
+  });
+  getQrCode();
+}
 
 // add a QR code of the URL when the page loads
 function getQrCode() {
@@ -28,4 +42,4 @@ function getQrCode() {
 }
 
 // on page load, call the QR code function:
-document.addEventListener('DOMContentLoaded', getQrCode);
+document.addEventListener('DOMContentLoaded', setup);
