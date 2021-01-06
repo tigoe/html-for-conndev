@@ -32,7 +32,7 @@ Inputs are often enclosed in forms, which allow you to access all of the element
 
 [Form elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) have many attributes, but the most important are the action, which is the server URL that will process the form information when you submit it. the method, which determines how the HTTP request is sent (GET, POST, etc), and the target, which determines which window or tab the results of the form request will be displayed in. 
 
-You can use a form without giving it an action if you simply want a structure for collecting all the input elements' values. In the input-types example in this repository, the form is used as a convenient way to iterate over all the inputs to clear them in the `clearValues()` [function in the JavaScript](input-types/script/js). 
+You can use a form without giving it an action if you simply want a structure for collecting all the input elements' values. In the input-types example in this repository, the form is used as a convenient way to iterate over all the inputs to clear them in the `clearValues()` [function in the JavaScript](input-types/script.js). 
 
 For more on input elements, see the [MDN Input Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) page. 
 
