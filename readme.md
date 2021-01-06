@@ -14,7 +14,7 @@ A web application is typically a combination of  HTML to define the structural e
 
 You can build a user interface using HTML, CSS and JavaScript and communications protocols to communicate changes betwen that interface and the devices it's designed to control.
 
-There are thousands of tutorials to introduce web development, so there's no need to repeat that here. The [Mozilla Developer Network](https://developer.mozilla.org/) site is a good reference. Covered below is enough information to send and receive data from devices to a web page. 
+There are thousands of tutorials to introduce web development, so there's no need to repeat that here. The [Mozilla Developer Network](https://developer.mozilla.org/) site is a good reference. This site is heavily indepbted to (and heaviy linked to pages on) MDN. Covered below is enough information to send and receive data from devices to a web page. 
 
 A minimal browser-based interface for a connected device might include a few input elements to change the device's properties, and a few text fields to display those properties. For example, imagine a connected air purifier. It would need controls to turn the device on and off, to set the fan speed, and perhaps set a schedule for when it should turn and off next, and a few text fields to report the state of the purifier and perhaps the last time the filter was changed. If the purifier includes an air quality sensor, perhaps it will report the sensor's readings as well. The interface might look something like [this page](purifier.html). 
 
@@ -94,6 +94,50 @@ A typical client-side JavaScript is structured like this:
 There's not typically a main loop, as you might be used to for C or Java; all the action happens on user-generated events. You can make some timed functions using `setInterval()` or `setTimeout()`, but these are typically less common. Here's a [plain Javascript template](template/script.js). It goes with this [HTML page](template/index.html). This [style sheet](template/styles.css) is used to set the positions of the elements. 
 
 ### Responsive Layout for Mobile Devices
+
+Different devices determine the way that a page is displayed. Text which looks great on a laptop or desktop computer might look a little small on a tablet, and far too small to read on a phone. The HTML and CSS specifications give you some ways to control this dynamically. You can make media queries in CSS, and you can use the viewport meta tag as defined in HTML to control layout. MDN's pages on [media queries](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Media_queries) and [the viewport](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag) cover these two topics in greater details. Here's the summary: 
+
+#### The Viewport
+Any browser's viewport is the area where the content is visible. It changes when you resize a window, and of course it changes depending on the size of your device's screen. Apple introduced the `<viewport>` tag in Safari, and other browswers have adopted it as a way to get the size of the viewable area. It's still not an official HTML specification, but works in most mobile browsers as of this writing. It goes in the head of the HTML document and looks like this:
+
+````
+  <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
+````
+The width of the viewport is determined by the device or current window's width; the initial scale sets the zoom. You change the scale by pinching and zooming, as limited by the minimum and maximum scales. 
+
+You can read viewport as a JSON object by calling `window.visualViewport`. There are also events associated with it, the most common of which is the resize event. Here's a JS snippet to print the viewport out and to add an event listener: 
+
+````
+console.log(window.visualViewport);
+
+visualViewport.addEventListener('resize', function() {
+  console.log('window is now ' + window.visualViewport.width + 'x' + window.visualViewport.height);
+});
+````
+
+### CSS media queries
+
+CSS media queries let you apply different CSS styles depending on the state of the viewport or device. There are four categories of media styles: screen, print, speech, and all. Using these, you can set different rules for a screen reader, for example, using the speech category, or for a mobile screen using the screen category and the width and height of the viewport. The tricky part is that mobile devices will often set a virtual viewport that's larger than the viewable area by default, and then shrink it to fit. That makes for timy text.  The `<viewport>` meta tag adjusts for this. You can adjust for the resize that many mobile devices impose by setting the initial scale and minimum-scale values. Here's a typical example from [MDN's page on the viewport](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag):
+
+````
+<meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
+`````
+
+You can combine this with responsive calculation in the CSS, like so:
+
+````
+@media screen and (max-width: 600px) {
+  body {
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      /* calculate the font size based on the view width:  */
+      font-size: calc(18px + 6 * ((100vw) / 320));
+  }
+}
+````
+
+This example assumes that it should only apply the changes to windows with a max width of 600 pixels. Under those conditions, it calculates a font size that's based on the viewport width. You can see this in action in the [responsive-layout example](responsive-layout/). 
+
+You can also make adjustments based on other conditions, like the orientation of the screen (portrait or landscape), whether the device has a pointer that can hover over an element, and other media features of the OS. For more on this, see [MDN's page on media query features](https://developer.mozilla.org/en-US/docs/Web/CSS/@media). 
 
 ### A Local Web Server
 
