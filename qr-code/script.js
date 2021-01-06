@@ -6,8 +6,6 @@ function getQrCode() {
   let tagCode = document.getElementById('textField').value;
   // start the tag request from qrserver.com:
   let url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + tagCode;
-  // add size:
-  url += "&ampsize=" + tagWidth + "x" +tagHeight;
   // get the image:
   let img = document.getElementById('qrCode');
   // fill in the properties of the image:
