@@ -183,7 +183,7 @@ A typical fetch request looks like this:
   }
 ````
 
-HTTP requests are stateless, meaning that the client makes a request, the server sends a response, and the connection is closed. This is great for many network transactions, because it's discrete and you don't maintain the connection. If you want more information, you just make the request again. Hpwever, HTTP doesn't afford a way for the server to push information to the client. All requests originate with the client. If you want information updated repeatedly, it's up to the client to make the repeated request. You can either ask the user to click a link a button again, or use a combination of `fetch()` and `setInterval()` in JavaScript, like so:
+HTTP requests are stateless, meaning that the client makes a request, the server sends a response, and the connection is closed. This is great for many network transactions, because it's discrete and you don't maintain the connection. If you want more information, you just make the request again. However, HTTP doesn't afford a way for the server to push information to the client. All requests originate with the client. If you want information updated repeatedly, it's up to the client to make the repeated request. You can either ask the user to click a link a button again, or use a combination of `fetch()` and `setInterval()` in JavaScript, like so:
 
 ````
 function makeRequest() {
@@ -215,6 +215,14 @@ In order to use WebSockets, your server must support WebSocket connections.
 The W3C WebSocket API is a part of the core JavaScript API, available in all browsers. There is a [WebSocket client example](websocket/) in this repository that connects to [websocket.org's](https//www.websocket.org) test WebSocket server. There is another popular API, socket.io, which implements WebScoekts slightly differently than the W3C standard. The socket.io API is mostly, but not totally, compatible with the standard.
 
 ### MQTT
+
+Message Queueing Telemetry Transfer, or [MQTT](https://mqtt.org/), is a lightweight network protocol for communication between devices. It's designed to support equipment that may not always be online, like automated devices built with microcontrollers. It offers the two-way communication possibilities of WebSockets without the need to maintain session state. 
+
+MQTT server programs are called brokers. A broker keeps track of messages from clients, and allows any client to query the last message sent by another client.  Messages are organized into topics. Typically, a topic represents a device, with each sub-topic representing its characteristics.  For example, a weather station might have the main topic "station" with subtopics "temperature", "humidity", "air quality", and so forth. The weather station itself would send messages to each of the subtopics, and a web client might subscribe to those topics to graph them onscreen over time. 
+
+Clients  either publish new messages to topics, or subscribe to topics, and the broker notifies them when new messages arrive.  For this reason,  MQTT is known as a Publish & Subscribe, or PubSub system. 
+
+See my [mqtt-examples repository](https://tigoe.github.io/mqtt-examples/) for more explanation and examples of MQTT in action. 
 
 ### QR Codes
 
