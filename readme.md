@@ -226,17 +226,46 @@ See my [mqtt-examples repository](https://tigoe.github.io/mqtt-examples/) for mo
 
 ### QR Codes
 
-[QR Codes](https://www.qrcode.com/en/) are a useful way to transfer text information from one computer to another, as long as the first has a display and the second has a camera which can read QR codes. You can use them to transfer URLs, phone numbers, text messages, addresses, or any other textual information. Generally, mobile device QR code readers are context sensitive, and can pick the right app to open a text string of a given format (like a URL). Because there is an algorithm for generating QR codes, they can be generated dynamically. There are countless sites online to generate QR codes, along with multiple libraries in many programming languages. Kazuhiko Arase has a useful JavaScript library available at [this link](https://github.com/kazuhikoarase/qrcode-generator). It's also hosted at this CDN:
+[QR Codes](https://www.qrcode.com/en/) are a useful way to transfer text information from one computer to another via  browser and camera. QR codes can be generated from an arbitraty text string in a browser using JavaScript. You can use them to transfer URLs, phone numbers, text messages, addresses, or any other textual information. Generally, mobile device QR code readers are context sensitive, and can pick the right app to open a text string of a given format (like a URL). There are countless sites online to generate QR codes, along with multiple libraries in many programming languages. Kazuhiko Arase has a useful JavaScript library available at [this link](https://github.com/kazuhikoarase/qrcode-generator). It's also hosted at this CDN:
   https://unpkg.com/qrcode-generator@1.4.4/qrcode.js in case you want to add the CDN link in the head of your HTML document. 
 
   There is a [QR Code generator example](qr-code/) in this repository. The [Responsive Layout example](responsive-layout/) also contains a dynamically generated QR code in it. 
 
 # Browsers and Hardware Interfaces
 
+Browsers have historically been limited from accessing the hardware of a computer. In the early days of the web and browsers, the thinking was that, since anything could be downloaded from the web, malicious code could be inserted into a computer from the browser, so the browser should be limited in terms of the hardware that it can affect. As a result, interfaces like serial and parallel ports, USB, Bluetooth, NFC, and so forth have generally been off-limits to the browser. 
+
+As the web has become ubiquitous, developers have seen the value of using it as a generalized hardware interface, and browser plugins to access hardware have developed. These still post security risks. However, many companies and developers see these risks as manageable, if rigorous standards are set for how browsers access hardware. 
+
+Google/Alphabet has done considerable work on setting standards for browser interfaces to hardware. They have developed APIs for [WebBluetooth](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API), [WebMIDI](https://www.w3.org/TR/webmidi/), [WebUSB](https://developer.mozilla.org/en-US/docs/Web/API/USB), and are working on [WebNFC](https://w3c.github.io/web-nfc/). All of these are available in the Chrome browser, and some are available to other browsers as well. 
+
+MDn maintins a list of all [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API) and their current states. 
+
+### Geolocation
+
+If the device that your browser is on has geolocation capability, it can be accessed via the [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API). Here is a [geolocation example](geolocation/).
+
 ### Web Bluetooth
+
+Useful links:
+* [WebBluetooth](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API)
+* [p5.BLE.js](https://itpnyu.github.io/p5ble-website/) - a p5.js API for Bluetooth LE
 
 ### WebMIDI
 
+Useful links:
+* [WebMIDI](https://www.w3.org/TR/webmidi/)
+* [p5.js WebMIDI examples](https://github.com/tigoe/SoundExamples/tree/master/WebMidi_Examples)
+
+
 ### WebUSB
 
+Useful links:
+* [WebUSB](https://developer.mozilla.org/en-US/docs/Web/API/USB)
+* [WebUSB GitHub Pages](https://wicg.github.io/webusb/)
+* [WebUSB for Arduino](https://github.com/webusb/arduino)
+
 ### WebNFC
+
+Useful links:
+* [WebNFC](https://w3c.github.io/web-nfc/)
