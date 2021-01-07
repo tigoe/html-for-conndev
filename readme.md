@@ -6,7 +6,7 @@ Operating a digital device without a screen is a challenge. Screens are expensiv
 *  How do the devices connect? 
 * With multiple operating systems, how do you program the device with the screen?
 
-Most screen-based computers have a web browser on them, making HTML and web connections an easy way to approach this problem. What follows is an introduction to just enough web development to make screen-based interfaces for many connected devices.
+Most screen-based computers have a web browser on them, making HTML and web connections an easy way to approach this problem. What follows is an introduction to just enough web development to make screen-based interfaces for many connected devices, and a collection of techniques for quick development of those interfaces.
 
 ## HTML, CSS, JavaScript, and the DOM
 
@@ -141,15 +141,83 @@ You can also make adjustments based on other conditions, like the orientation of
 
 ### A Local Web Server
 
+When you're developing web interfaces, it's often useful to have a local web server to serve the files, rather than just opening them from your computer's filesystem. For example, you might want to open the file on a mobile phone or tablet. A quick solution for this that's installed by default on MAcOS, Windows 10, and Linux is Python's SimpleHTTPServer script. You can start it from the command line (MacOS Terminal; Windows Powershell) by changing directories to the directory where your HTML files are and typing:
+
+````
+python -m SimpleHTTPServer
+````
+You'll get a response like this:
+
+````
+Serving HTTP on 0.0.0.0 port 8000 ...
+````
+
+Then you can open a browser and enter `http://localhost:8000` or your computer's IP address followed by `:8000` to see your files. To stop the server, type control-C.
+
+You'll often need to know your computer's IP address as well. You can get this from your system's control panel, or on the command line using the ifconfig on MAcOS or Linux, and ipcommand on Windows. Look for the IP address of your WiFi interface. On MacOS, it's called `en0`; on Windows 10, `Wireless LAN Adapter Wi-Fi`; on Linux, usually `wlan0`. If your computer's IP address is something like 192.168.1.10, you'd enter `http://192.168.1.10:8000` in the browser's address bar to get your files. 
+
 ## Communications Protocols
+
+To connect your web interface to other devices, there are a number of protocols you can choose from. The easiest ones are the web-based protocols that the browser and DOM technologies use all the time. HTTP (the Hypertext Transaport Protocol) and HTTPS allow you to make requests to web servers. WebSockets are an extension of HTTP that allow you to maintain a persistent connection to a web server, if the server supports WebSockets. MQTT (Message Queueing Telemetry Transfer) is a lighter weight protocol designed for communication with devices. QR codes are an easy way to transfer text-based information, including URLs, from one computer to another. All of these can be implemented in a browser, using only HTML and JavaScript. 
+
+What follows are examples and links to how to use these four protocols in a web application. 
 
 ### HTTP
 
-### QR Codes
+HTTP is the first protocol of the DOM. Every `<a href="">` tag, every `<img src=">` tag, and many others enable HTML to make HTTP requests. The `<form>` tag enables HTTP requests using all of HTTP's request methods, GET, POST, PUT, DELETE, and PATCH. 
+
+You can also make HTTP requests in JavaScript using `fetch()`, detailed in the [fetch example](fetch/) in this repository. Fetch allows you to bring new content into a page without reloading the page. It's a good way to get the latest values from a connected device, either directly if the device has an HTTP interface, or indirectly, through an HTTP server. 
+
+A typical fetch request looks like this:
+
+````
+  // make the HTTP/HTTPS call:
+  fetch('http://my.device.address/sensor')
+    .then(response => response.json())  // convert response to JSON
+    .then(data => getResponse(data))   // get the body of the response
+    .catch(error => getResponse(error));// if there is an error
+
+  function getResponse(result) {
+    // do something with the resulting data:
+     console.log(result);
+  }
+````
+
+HTTP requests are stateless, meaning that the client makes a request, the server sends a response, and the connection is closed. This is great for many network transactions, because it's discrete and you don't maintain the connection. If you want more information, you just make the request again. Hpwever, HTTP doesn't afford a way for the server to push information to the client. All requests originate with the client. If you want information updated repeatedly, it's up to the client to make the repeated request. You can either ask the user to click a link a button again, or use a combination of `fetch()` and `setInterval()` in JavaScript, like so:
+
+````
+function makeRequest() {
+  // add the fetch() request shown above here
+}
+
+// make a request every ten seconds:
+setInterval(makeRequest, 10000);
+````
+
+You can also use an HTML META tag to refresh the entire page periodically. This tag typically goes in the HTML document's head, and it looks like this:
+
+````
+<meta http-equiv="refresh" content="10">
+````
+
+The `content` parameter sets the page to refresh every ten seconds.
+
+If you need a communication pattern in which either client or server can send a message to each other at any time, consider either WebSockets or MQTT.
+
+### WebSockets
+
+[WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) are an extension of the HTTP specification designed to support a full-duplex, encrypted connection between client and server. They're good for cases where you need for the server to be able to send updates to the client, or when you need multiple clients to communicate with each other in a chatroom-style duplex communication. 
+
+Unlike regular HTTP requests, every WebSocket connection has a session state that must be maintained by server and client. If either side loses the connection, a new session must be started by the client. This makes them a bit more fragile than HTTP request-based communication, because if the client loses a network connection, the server may not know immediately, and continue to send messages across the abandoned session connection.
+
+In order to use WebSockets, your server must support WebSocket connections. 
+
+The W3C WebSocket API is a part of the core JavaScript API, available in all browsers. There is a [WebSocket client example](websocket/) in this repository that connects to [websocket.org's](https//www.websocket.org) test WebSocket server. There is another popular API, socket.io, which implements WebScoekts slightly differently than the W3C standard. The socket.io API is mostly, but not totally, compatible with the standard.
 
 ### MQTT
 
-### WebSockets
+### QR Codes
+
 
 # Browsers and Hardware Interfaces
 
