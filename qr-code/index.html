@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <title> QR Code Generator</title>
+  <script src="https://unpkg.com/qrcode-generator@1.4.4/qrcode.js"></script>
   <script src="script.js"></script>
 </head>
 <body>
   <p>Enter some text here to generate a QR code:</p>
   <input type="text" id="textField" onchange="getQrCode();">
   <p>
-    <img id='qrCode'>
+    <div id='qrCode'>
   </p> 
 
 </body>
