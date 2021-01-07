@@ -226,6 +226,10 @@ See my [mqtt-examples repository](https://tigoe.github.io/mqtt-examples/) for mo
 
 ### QR Codes
 
+[QR Codes](https://www.qrcode.com/en/) are a useful way to transfer text information from one computer to another, as long as the first has a display and the second has a camera which can read QR codes. You can use them to transfer URLs, phone numbers, text messages, addresses, or any other textual information. Generally, mobile device QR code readers are context sensitive, and can pick the right app to open a text string of a given format (like a URL). Because there is an algorithm for generating QR codes, they can be generated dynamically. There are countless sites online to generate QR codes, along with multiple libraries in many programming languages. Kazuhiko Arase has a useful JavaScript library available at [this link](https://github.com/kazuhikoarase/qrcode-generator). It's also hosted at this CDN:
+  https://unpkg.com/qrcode-generator@1.4.4/qrcode.js in case you want to add the CDN link in the head of your HTML document. 
+
+  There is a [QR Code generator example](qr-code/) in this repository. The [Responsive Layout example](responsive-layout/) also contains a dynamically generated QR code in it. 
 
 # Browsers and Hardware Interfaces
 
