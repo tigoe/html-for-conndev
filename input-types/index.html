@@ -14,70 +14,72 @@
    <p>The submit button will clear the form.</p>
    <p>See the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">MDN page on input elements</a> for more information,</p>
    <form id="input-form" action="" method="post">
-      <div>button: <input type="button" value="Click here" onclick="getValue(this);">
+      <div>
+         <label for="button">button: </label>
+         <input type="button" value="Click here" onclick="getValue(this);">
          <span id="buttonVal"></span>
       </div>
-      <div>checkbox: <input type="checkbox" onchange="getValue(this);">
+      <div><label for="checkbox">checkbox: </label><input type="checkbox" onchange="getValue(this);">
          <span id="checkboxVal"></span>
       </div>
-      <div>color: <input type="color" value="#000000" onchange="getValue(this);">
+      <div><label for="color">color: </label><input type="color" value="#000000" onchange="getValue(this);">
          <span id="colorVal"></span>
       </div>
-      <div>date: <input type="date" onchange="getValue(this);">
+      <div><label for="date">date: </label><input type="date" onchange="getValue(this);">
          <span id="dateVal"></span>
       </div>
-      <div>datetime-local: <input type="datetime-local" onchange="getValue(this)" id="datetime">
+      <div><label for="datetime-local">datetime-local: </label><input type="datetime-local" onchange="getValue(this)" id="datetime">
          <span id="datetime-localVal"></span>
       </div>
-      <div>email: <input type="email" onchange="getValue(this)" id="email">
+      <div><label for="email">email: </label><input type="email" onchange="getValue(this)" id="email">
          <span id="emailVal"></span>
       </div>
-      <div>file: <input type="file" onchange="getValue(this)" id="file">
+      <div><label for="file">file: </label><input type="file" onchange="getValue(this)" id="file">
          <span id="fileVal"></span>
       </div>
-      <div>hidden: <input type="hidden" onchange="getValue(this)">
+      <div><label for="hidden">hidden: </label><input type="hidden" onchange="getValue(this)">
          <span id="hiddenVal"></span>
       </div>
-      <div>month: <input type="month" onchange="getValue(this)" id="month">
+      <div><label for="month">month: </label><input type="month" onchange="getValue(this)" id="month">
          <span id="monthVal"></span>
       </div>
-      <div>number: <input type="number" min="0" max="100" onchange="getValue(this)" id="number">
+      <div><label for="number">number: </label><input type="number" min="0" max="100" onchange="getValue(this)" id="number">
          <span id="numberVal"></span>
       </div>
-      <div>password: <input type="password" onchange="getValue(this)" id="password">
+      <div><label for="password">password: </label><input type="password" onchange="getValue(this)" id="password">
          <span id="passwordVal"></span>
       </div>
-      <div>radio: <input type="radio" onchange="getValue(this)" id="radio">
+      <div><label for="radio">radio: </label><input type="radio" onchange="getValue(this)" id="radio">
          <span id="radioVal"></span>
       </div>
-      <div>range: <input type="range" min="0" max="100" onchange="getValue(this)" id="range">
+      <div><label for="range">range: </label><input type="range" min="0" max="100" onchange="getValue(this)" id="range">
          <span id="rangeVal"></span>
       </div>
-      <div>search: <input type="search" onchange="getValue(this)" id="search">
+      <div><label for="search">search: </label><input type="search" onchange="getValue(this)" id="search">
          <span id="searchVal"></span>
       </div>
-      <div>tel: <input type="tel" onchange="getValue(this)" id="tel">
+      <div><label for="tel">tel: </label><input type="tel" onchange="getValue(this)" id="tel">
          <span id="telVal"></span>
       </div>
-      <div>text: <input type="text" onchange="getValue(this)" id="text">
+      <div><label for="text">text: </label><input type="text" onchange="getValue(this)" id="text">
          <span id="textVal"></span>
       </div>
-      <div>time: <input type="time" onchange="getValue(this)" id="time">
+      <div><label for="time">time: </label><input type="time" onchange="getValue(this)" id="time">
          <span id="timeVal"></span>
       </div>
-      <div>url: <input type="url" onchange="getValue(this)" value="http://" id="url">
+      <div><label for="url">url: </label><input type="url" onchange="getValue(this)" value="http://" id="url">
          <span id="urlVal"></span>
       </div>
-      <div>week: <input type="week" onchange="getValue(this)" id="week">
+      <div><label for="week">week: </label><input type="week" onchange="getValue(this)" id="week">
          <span id="weekVal"></span>
       </div>
-      <div>reset: <input type="reset" value="reset" onclick="clearValues();">
+      <div><label for="reset">reset: </label><input type="reset" value="reset" onclick="clearValues();">
          <span id="resetVal"></span>
       </div>
       <div id="imageInput">image: <input type="image" src="img/button.png" alt="image of a button" value="it's a button" onclick="getValue(this);">
          <span id="imageVal"></span>
       </div>
-      <div>submit: <input type="submit" onclick="getValue(this);">
+      <div><label for="submit">submit: </label><input type="submit" onclick="getValue(this);">
          <span id="submitVal"></span>
       </div>
    </form>
