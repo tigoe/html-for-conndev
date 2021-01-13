@@ -56,4 +56,4 @@ function setTime() {
 }
 
 // add a listener for the page to load:
-window.addEventListener('load', setup);
+window.addEventListener('DOMContentLoaded', setup);

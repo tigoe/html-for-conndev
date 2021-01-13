@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"
+    integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA=="
+    crossorigin="anonymous"></script>
+  <script language="javascript" type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/p5.serialserver@0.0.29/lib/p5.serialport.js"></script>
+  <script src="script.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>P5.serialport input from an Arduino</h1>
+  <section id="serialport">Select a serial port: <select id="portSelector"></select></section>
+
+  <section id="controls"><h2>Controls</h2>
+    Power: <input type="button" id="power" value="off">
+    <span id="powerVal"></span><br>
+    Fan Speed: <input type="range" id="fanSpeed" min="0" max="100" value="0">
+    <span id="fanSpeedVal"></span><br>
+  </section>
+
+  <section id="description">
+    <h2>Explanation</h2>
+    <p>In this example, an Arduino, wired as shown in Figures 1 and 2 below, sends
+      values from a potentiometer and a pushbutton serially to the <a href="https://github.com/p5-serial/p5.serialcontrol/releases">p5.serialcontrol app</a>. It uses the <a href="https://github.com/arduino-libraries/Arduino_JSON">Arduino_JSON library</a> to format the serial output as JSON. The code can be found at <a href="ArduinoSendJSON/ArduinoSendJSON.ino">this link</a>. This sketch reads from the app
+      via a websocket, using the <a href="https://github.com/p5-serial/p5.serialport">p5.serialport library</a>. 
+    </p>
+    <p>When the knob or the pushbutton changes signficantly, their values are sent serially as a JSON string. The sketch
+      reads this string, parses it, and uses the values to set the values of the button and slider above. </p>
+      <section id="figures">
+    <figure>
+      <img src="img/nano_button_potentiometer_bb.svg" width="300"
+        alt="Arduino Nano with potentiometer and button, board view"><figcaption>Figure 1. Arduino Nano with potentiometer and button, board view. The Nano is mounted across the center sectionide of the breadboard, in rows 1-15. The Nano's physical pins are numbered in a U pattern from top left to top right. The Vcc Pin (physcial pin 2) connects to the breadboard's voltage bus on the left side. The Ground pin (physical pin 14) connects s to the breadboard's voltage bus on the left side. A pushbutton straddles the center fo the board on rows 18-20. The lower left pin in row 20 is connected to the left side ground bus. The top right pin is connected to the Arduino's digital input (physical pin 20, row 10 of the breadboard on the right side). A potentiometer is mounted in rows 23-25 on the left side of the board. Row 23 is also connected to the left side voltage bus. Row 25 is connected to the left side ground bus. Row 24 is connected to the Arduino's pin A0 (physical pin 4, row 4 of the breadboard on the left side).</figcaption>
+    </figure>
+    <figure>
+      <img src="img/nano_button_potentiometer_schem.svg" width="500"
+      alt="Arduino Nano with potentiometer and button, schematic view"><figcaption>Figure 2. Arduino Nano with potentiometer and button, schematic view. A pushbutton is connected to digital input 2 on one side, and to ground on the other. A potentiometer is connected to Vin (3.3V) on one side, and ground on the other. Its wiper is attached to analog input pin A0.</figcaption>
+    </figure>
+  </section>
+  </section>
+</body>
+
+</html>
