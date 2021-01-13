@@ -1,3 +1,16 @@
+/*
+  JSON serial sending
+  Reads sensors and formats them as a JSON object, then sends
+  the resulting object as a JSON string out the serial port.
+  Uses the following library:
+  https://librarymanager/All#Arduino_JSON
+  Circuit:
+  - Pushbutton connected to pin D2 and to ground
+  - Potentiometer connected to pin A0
+
+  created 12 Jan 2021
+  by Tom Igoe
+*/
 #include <Arduino_JSON.h>
 
 // set the input pins:
@@ -38,11 +51,11 @@ void loop() {
     // set change flag so serial will send:
     inputsChanged = true;
   }
-
+  
+  // if the button has changed:
   if (buttonState != lastButtonState) {
     outgoing["button"] = buttonState;
     // save button state for comparison next time:
-
     lastButtonState = buttonState;
     // set change flag so serial will send:
     inputsChanged = true;
