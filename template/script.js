@@ -9,7 +9,7 @@ by Tom Igoe
 */
 
 // this function is called when the page is loaded. 
-// element event listeners are  added here:
+// event listener functions are initialized here:
 function setup(event) {
   console.log('page is loaded');
 
@@ -24,6 +24,8 @@ function setup(event) {
  setInterval(setTime, 1000); 
 }
 
+// these are event listener functions for when 
+// the DOM elements generate events:
 function turnOnOff(event) {
   // get the event target:
   let thisButton = event.target;
@@ -55,5 +57,6 @@ function setTime() {
   timeSpan.innerHTML = now;
 }
 
-// add a listener for the page to load:
+// This is a listener for the page to load.
+// This is the command that actually starts the script:
 window.addEventListener('DOMContentLoaded', setup);

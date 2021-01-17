@@ -10,7 +10,7 @@ Most screen-based computers have a web browser on them, making HTML and web conn
 
 ## HTML, CSS, JavaScript, and the DOM
 
-A web application is typically a combination of  HTML to define the structural elements of the page (paragraphs, headings, input elements, etc.), CSS to define the styles and layout of the elements, and JavaScript to define their behavior. These three technologies (HTML, CSS, and JavaScript) comprise the Document Object Model, or DOM of a web application. The objects are the various HTML elements and CSS styles. JavaScript is the programming language used to manipulate the DOM and to communicate with other devices.
+A web application is typically a combination of  HTML to define the structural elements of the page (paragraphs, headings, input elements, etc.), Cascading Style Sheets (CSS) to define the styles and layout of the elements, and JavaScript to define their behavior. These three technologies (HTML, CSS, and JavaScript) comprise the **Document Object Model**, or **DOM** of a web application. The objects are the various HTML elements and CSS styles. JavaScript is the programming language used to manipulate the DOM and to communicate with other devices.
 
 You can build a user interface using HTML, CSS and JavaScript and communications protocols to communicate changes betwen that interface and the devices it's designed to control.
 
@@ -36,17 +36,6 @@ You can use a form without giving it an action if you simply want a structure fo
 
 For more on input elements, see the [MDN Input Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) page. 
 
-### DOM Manipulation in JavaScript
-
-Every JS library has its own shortcuts for manipulating DOM elements in JavaScript, but it's not that hard to do without a library, and it's good to know. DOM elements are elements of the HTML `document`, of course, and there are various JS functions for getting them:
-
-* `document.getElementsByTagName('input')` returns all the elements of a given tag, such as `input`
-* `document.getElementById('powerInput')` returns the element with the id `powerInput`
-* `document.getElementsByClassName('controls')` returns all the elements with the class name `controls`
-* `document.getElementsByName('sensor')` returns all the elements with the name `sensor`
-
-Once you've got an element, you can get or set any of its properties.
-
 ### DOM Events
 
 There are a number of [events associated with the DOM](https://developer.mozilla.org/en-US/docs/Web/Events) and DOM elements. You can use these to take action when an element changes its value, loses or gains focus, and so forth. There are also mouse and keyboard events that typically apply to the whole document. 
@@ -68,7 +57,7 @@ You can also add an event listener in your JavaScript. In the HTML, you only def
 
 ````
 
-Then in the JavaScript, you get the element and add the listener function:
+Then in JavaScript, you get the element and add the listener function:
 
 ````
 let in = document.getElementById('text');
@@ -88,10 +77,48 @@ Adding event listeners takes more typing, but it lets you keep your elements' be
 
 A typical client-side JavaScript is structured like this:
 
-* define your listener functions
+* define functions to listen for DOM events
 * add a listener function for the page load event
 
 There's not typically a main loop, as you might be used to for C or Java; all the action happens on user-generated events. You can make some timed functions using `setInterval()` or `setTimeout()`, but these are typically less common. Here's a [plain Javascript template](template/script.js). It goes with this [HTML page](template/index.html). This [style sheet](template/styles.css) is used to set the positions of the elements. 
+
+### DOM Manipulation in JavaScript
+
+Every JS library has its own shortcuts for manipulating DOM elements in JavaScript, but it's not that hard to do without a library. DOM elements are sub-elements (sometimes called children) of the HTML `document` element, and there are various JS functions for getting them:
+
+* `document.getElementsByTagName('input')` returns all the elements of a given tag, such as `input`
+* `document.getElementById('powerInput')` returns the element with the id `powerInput`
+* `document.getElementsByClassName('controls')` returns all the elements with the class name `controls`
+* `document.getElementsByName('sensor')` returns all the elements with the name `sensor`
+
+Once you've got an element, you can get or set any of its properties.
+
+## Positioning and Layout with CSS
+
+As you saw in the [input elements example](input-types/index.html) and the [air purifier example](purifier.html) page, the elements of a page need to be laid out in a readable way. The HTML document defines what elements will be in a page, but it doesn define their positions. Without some instructions, elments follow each other one after another. The CSS page for each of those examples defines the elements positions. 
+
+The purifier example combines the CSS and HTML in one page. The input types example follows a more typical pattern, separating the HTML, CSS, and JS into three documents and including the CSS and JS in the head of the HTML. 
+
+Both examples are made up of a few elements: 
+* divisions, or `<div>` elements, defining larger groups of text or controls
+* text labels, sometimes on their own, and sometimes in `<label>` elements
+* input elements
+* `<span>` elements to display the input elements' values
+
+Planning out the page in terms of different element types simplifies layout. In the CSS for each example, the input and span elements are positioned in their own columns, and the labels are not positioned, assuming they will automatically position at the beginning of each line. You can see this in the CSS for the purifier example:
+
+````
+input {
+  position: sticky;
+  left: 120px;
+}
+
+span {
+  position: sticky;
+  left: 300px;
+}
+````
+This is a very minimal layout. They get more complicated, and CSS offers a number of ways to manage layout. For a thorough introduction, see MDN's  [Learning CSS layout](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout) tutorial. The pages on [normal flow](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Normal_Flow), [flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox), [grids](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids), [floats](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Floats), and [positioning](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Positioning) provide a good foundation. 
 
 ### Responsive Layout for Mobile Devices
 
@@ -139,7 +166,7 @@ This example assumes that it should only apply the changes to windows with a max
 
 You can also make adjustments based on other conditions, like the orientation of the screen (portrait or landscape), whether the device has a pointer that can hover over an element, and other media features of the OS. For more on this, see [MDN's page on media query features](https://developer.mozilla.org/en-US/docs/Web/CSS/@media). 
 
-### A Local Web Server
+## A Local Web Server
 
 When you're developing web interfaces, it's often useful to have a local web server to serve the files, rather than just opening them from your computer's filesystem. For example, you might want to open the file on a mobile phone or tablet. A quick solution for this that's installed by default on MAcOS, Windows 10, and Linux is Python's SimpleHTTPServer script. You can start it from the command line (MacOS Terminal; Windows Powershell) by changing directories to the directory where your HTML files are and typing:
 
