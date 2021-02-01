@@ -190,8 +190,7 @@ To connect your web interface to other devices, there are a number of protocols 
 What follows are examples and links to how to use these four protocols in a web application. 
 
 ### HTTP
-
-HTTP is the first protocol of the DOM. Every `<a href="">` tag, every `<img src=">` tag, and many others enable HTML to make HTTP requests. The `<form>` tag enables HTTP requests using all of HTTP's request methods, GET, POST, PUT, DELETE, and PATCH. 
+HTTP is the first protocol of the Web and the DOM. Every time you go to a website, you use HTTP. Every `<a href="">` tag, every `<img src=">` tag, and many others enable HTML to make HTTP requests. The `<form>` tag enables HTTP requests using all of HTTP's request methods, GET, POST, PUT, DELETE, and PATCH. If you're curious to try different request methods and get to know what they look like, [HTTPBin](https://httpbin.org/) is a useful online tool for testing different kinds of HTTP requests. [Curl](https://curl.se/) is a command line tool for making HTTP requests of all kinds. 
 
 You can also make HTTP requests in JavaScript using `fetch()`, detailed in the [fetch example](fetch/) in this repository. Fetch allows you to bring new content into a page without reloading the page. It's a good way to get the latest values from a connected device, either directly if the device has an HTTP interface, or indirectly, through an HTTP server. 
 
