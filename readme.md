@@ -1,6 +1,5 @@
 
 # HTML for Connected Devices
-
 Operating a digital device without a screen is a challenge. Screens are expensive components to add if you're designing a household device like a connected speaker or an air purifier, so many device designers use a connection between the device and your mobile device or personal computer to provide a screen interface. This has its own complications, most importantly:
 
 *  How do the devices connect? 
@@ -80,7 +79,10 @@ A typical client-side JavaScript is structured like this:
 * define functions to listen for DOM events
 * add a listener function for the page load event
 
-There's not typically a main loop, as you might be used to for C or Java; all the action happens on user-generated events. You can make some timed functions using `setInterval()` or `setTimeout()`, but these are typically less common. Here's a [plain Javascript template](template/script.js). It goes with this [HTML page](template/index.html). This [style sheet](template/styles.css) is used to set the positions of the elements. 
+There's not typically a main loop, as you might be used to for C or Java; all the action happens on user-generated events. You can make some timed functions using `setInterval()` or `setTimeout()`, but these are typically less common.
+
+Here's a [plain Javascript template](template/script.js). It goes with this [HTML page](template/index.html). This [style sheet](template/styles.css) is used to set the positions of the elements. 
+
 
 ### DOM Manipulation in JavaScript
 
@@ -142,7 +144,7 @@ visualViewport.addEventListener('resize', function() {
 });
 ````
 
-### CSS media queries
+### CSS Media Queries
 
 CSS media queries let you apply different CSS styles depending on the state of the viewport or device. There are four categories of media styles: screen, print, speech, and all. Using these, you can set different rules for a screen reader, for example, using the speech category, or for a mobile screen using the screen category and the width and height of the viewport. The tricky part is that mobile devices will often set a virtual viewport that's larger than the viewable area by default, and then shrink it to fit. That makes for timy text.  The `<viewport>` meta tag adjusts for this. You can adjust for the resize that many mobile devices impose by setting the initial scale and minimum-scale values. Here's a typical example from [MDN's page on the viewport](https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag):
 
@@ -241,7 +243,6 @@ In order to use WebSockets, your server must support WebSocket connections.
 The W3C WebSocket API is a part of the core JavaScript API, available in all browsers. There is a [WebSocket client example](websocket/) in this repository that connects to [websocket.org's](https//www.websocket.org) test WebSocket server. There is another popular API, socket.io, which implements WebScoekts slightly differently than the W3C standard. The socket.io API is mostly, but not totally, compatible with the standard.
 
 ### MQTT
-
 Message Queueing Telemetry Transfer, or [MQTT](https://mqtt.org/), is a lightweight network protocol for communication between devices. It's designed to support equipment that may not always be online, like automated devices built with microcontrollers. It offers the two-way communication possibilities of WebSockets without the need to maintain session state. 
 
 MQTT server programs are called brokers. A broker keeps track of messages from clients, and allows any client to query the last message sent by another client.  Messages are organized into topics. Typically, a topic represents a device, with each sub-topic representing its characteristics.  For example, a weather station might have the main topic "station" with subtopics "temperature", "humidity", "air quality", and so forth. The weather station itself would send messages to each of the subtopics, and a web client might subscribe to those topics to graph them onscreen over time. 
@@ -251,14 +252,12 @@ Clients  either publish new messages to topics, or subscribe to topics, and the 
 See my [mqtt-examples repository](https://tigoe.github.io/mqtt-examples/) for more explanation and examples of MQTT in action. 
 
 ### QR Codes
-
-[QR Codes](https://www.qrcode.com/en/) are a useful way to transfer text information from one computer to another via  browser and camera. QR codes can be generated from an arbitraty text string in a browser using JavaScript. You can use them to transfer URLs, phone numbers, text messages, addresses, or any other textual information. Generally, mobile device QR code readers are context sensitive, and can pick the right app to open a text string of a given format (like a URL). There are countless sites online to generate QR codes, along with multiple libraries in many programming languages. Kazuhiko Arase has a useful JavaScript library available at [this link](https://github.com/kazuhikoarase/qrcode-generator). It's also hosted at this CDN:
+[QR Codes](https://www.qrcode.com/en/) are a useful way to transfer text information from one computer to another via  browser and camera. QR codes can be generated from an arbitrary text string in a browser using JavaScript. You can use them to transfer URLs, phone numbers, text messages, addresses, or any other textual information. Generally, mobile device QR code readers are context sensitive, and can pick the right app to open a text string of a given format (like a URL). There are countless sites online to generate QR codes, along with multiple libraries in many programming languages. Kazuhiko Arase has a useful JavaScript library available at [this link](https://github.com/kazuhikoarase/qrcode-generator). It's also hosted at this CDN:
   https://unpkg.com/qrcode-generator@1.4.4/qrcode.js in case you want to add the CDN link in the head of your HTML document. 
 
   There is a [QR Code generator example](qr-code/) in this repository. The [Responsive Layout example](responsive-layout/) also contains a dynamically generated QR code in it. 
 
 # Browsers and Hardware Interfaces
-
 Browsers have historically been limited from accessing the hardware of a computer. In the early days of the web and browsers, the thinking was that, since anything could be downloaded from the web, malicious code could be inserted into a computer from the browser, so the browser should be limited in terms of the hardware that it can affect. As a result, interfaces like serial and parallel ports, USB, Bluetooth, NFC, and so forth have generally been off-limits to the browser. 
 
 As the web has become ubiquitous, developers have seen the value of using it as a generalized hardware interface, and browser plugins to access hardware have developed. These still post security risks. However, many companies and developers see these risks as manageable, if rigorous standards are set for how browsers access hardware. 
@@ -268,30 +267,40 @@ Google/Alphabet has done considerable work on setting standards for browser inte
 MDn maintins a list of all [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API) and their current states. 
 
 ### Geolocation
-
 If the device that your browser is on has geolocation capability, it can be accessed via the [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API). Here is a [geolocation example](geolocation/).
 
-### Web Bluetooth
+### Sensors
+The W3C defines a number of different sensor APIs to access the various sensors available on mobile devices. the Sensor APIs only work when served via HTTPS, and are not available on all devices, so you need to check to see whether they're available and accessible first. The sensors available are:
+* Accelerometer
+* AmbientLightSensor
+* Gyroscope
+* LinearAccelerationSensor
+* Magnetometer
+* OrientationSensor
 
+Example: [sensor tests](sensor-tests)
+
+Useful links:
+* [Sensor](https://developer.mozilla.org/en-US/docs/Web/API/Sensor)
+* [Sensor APIs Introduction](https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs)
+
+### Web Bluetooth
 Useful links:
 * [WebBluetooth](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API)
 * [p5.BLE.js](https://itpnyu.github.io/p5ble-website/) - a p5.js API for Bluetooth LE
 
 ### WebMIDI
-
 Useful links:
 * [WebMIDI](https://www.w3.org/TR/webmidi/)
 * [p5.js WebMIDI examples](https://github.com/tigoe/SoundExamples/tree/master/WebMidi_Examples)
 
 
 ### WebUSB
-
 Useful links:
 * [WebUSB](https://developer.mozilla.org/en-US/docs/Web/API/USB)
 * [WebUSB GitHub Pages](https://wicg.github.io/webusb/)
 * [WebUSB for Arduino](https://github.com/webusb/arduino)
 
 ### WebNFC
-
 Useful links:
 * [WebNFC](https://w3c.github.io/web-nfc/)
