@@ -270,7 +270,7 @@ MDn maintins a list of all [Web APIs](https://developer.mozilla.org/en-US/docs/W
 If the device that your browser is on has geolocation capability, it can be accessed via the [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API). Here is a [geolocation example](geolocation/).
 
 ### Sensors
-The W3C defines a number of different sensor APIs to access the various sensors available on mobile devices. the Sensor APIs only work when served via HTTPS, and are not available on all devices, so you need to check to see whether they're available and accessible first. The sensors available are:
+The W3C defines a number of different sensor APIs to access the various sensors available on mobile devices. the Sensor APIs only work when served via HTTPS, so you might want to test on a platform-as-a-service like [glitch.com](http://www.glitch.com).  The sensors are not available on all devices, so you need to check to see whether they're available and accessible first. The sensors in the API are:
 * Accelerometer
 * AmbientLightSensor
 * Gyroscope
@@ -278,7 +278,7 @@ The W3C defines a number of different sensor APIs to access the various sensors 
 * Magnetometer
 * OrientationSensor
 
-Example: [sensor tests](sensor-tests)
+Here's an example that runs all the sensors: [sensor tests](sensor-tests) (also hosted on [Glitch](https://glitch.com/edit/#!/sensor-tests))
 
 Useful links:
 * [Sensor](https://developer.mozilla.org/en-US/docs/Web/API/Sensor)
