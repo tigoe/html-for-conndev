@@ -13,7 +13,7 @@ A web application is typically a combination of  HTML to define the structural e
 
 You can build a user interface using HTML, CSS and JavaScript and communications protocols to communicate changes betwen that interface and the devices it's designed to control.
 
-There are thousands of tutorials to introduce web development, so there's no need to repeat that here. The [Mozilla Developer Network](https://developer.mozilla.org/) site is a good reference. This site is heavily indepbted to (and heaviy linked to pages on) MDN. Covered below is enough information to send and receive data from devices to a web page. 
+There are thousands of tutorials to introduce web development, so there's no need to repeat that here. The [Mozilla Developer Network](https://developer.mozilla.org/) site is a good reference. This site is heavily indebted to (and heavily linked to pages on) MDN. Covered below is enough information to send and receive data from devices to a web page. 
 
 A minimal browser-based interface for a connected device might include a few input elements to change the device's properties, and a few text fields to display those properties. For example, imagine a connected air purifier. It would need controls to turn the device on and off, to set the fan speed, and perhaps set a schedule for when it should turn and off next, and a few text fields to report the state of the purifier and perhaps the last time the filter was changed. If the purifier includes an air quality sensor, perhaps it will report the sensor's readings as well. The interface might look something like [this page](purifier.html). 
 
