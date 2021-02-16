@@ -1,0 +1,24 @@
+{
+  "name": "tigoe-get-post",
+  "version": "0.0.2",
+  "description": "a node.js example showing how to handle GET and POST requests.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "engines": {
+    "node": "12.x"
+  },
+  "repository": {
+    "url": "https://github.com/tigoe/html-for-conndev"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "express"
+  ]
+}
