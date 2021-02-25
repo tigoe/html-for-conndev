@@ -9,7 +9,8 @@ https://github.com/arduino-libraries/ArduinoBLE/tree/master/examples/Peripheral/
 Library documentaton:
 https://www.arduino.cc/en/Reference/ArduinoBLE
 
-created 20 Feb 2021 
+created 20 Feb 2021
+updated 25 Feb 2021 
 by Tom Igoe
 */
 
