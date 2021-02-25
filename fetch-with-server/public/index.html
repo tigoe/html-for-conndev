@@ -7,14 +7,17 @@
   <title>Fetch Examples</title>
 </head>
 <body>
-  <p>This page demonstrates JavaScript's fetch() function. Fetch uses JavaScript's async/await interface. 
-    It works by making an HTTP request in a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, 
+  <p>This page demonstrates JavaScript's fetch() function. Fetch uses JavaScript's async/await interface. This version also has an associated node.js and express.js server.</p>
+
+    <p>It works by making an HTTP request in a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, 
     then awaiting a response. A successful response returns a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a> object. 
     You usually convert the response to either text or JSON, and then use that result in your script. You might also need to catch an error if there is one, 
     or you might need to set some parameters, like the headers of your HTTP request, or whether or not to permit CORS requests, and so forth. 
     You can see examples of these in this page's <a href="script.js"> script</a>. 
-    
-    For more info, see
+  </p>
+   <p>This page and server is also available at <a href="https://tigoe-get-post.glitch.me">Glitch.com</a>
+  </p>
+    <p>For more info, see
     <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">MDN's documentation on using fetch.</a>
   </p>
 <input type="button" value="Fetch JSON" onClick="fetchJSON();"> 
