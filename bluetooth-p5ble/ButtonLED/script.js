@@ -50,7 +50,9 @@ function gotCharacteristics(error, characteristics) {
   }
   // if no error, update the page:
   textDiv.innerHTML = 'characteristics: ' + characteristics;
-  myCharacteristic = characteristics[0];
+  // read the second characteristic 
+  // (the buttonCharacteristic in the Arduino example):
+  myCharacteristic = characteristics[1];
   // Read the value of the first characteristic
   myBLE.read(myCharacteristic, gotValue);
 }
