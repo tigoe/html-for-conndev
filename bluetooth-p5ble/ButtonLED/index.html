@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/p5ble@0.0.4/dist/p5.ble.js" type="text/javascript"></script>
+  <script src="script.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <p>
+    This page shows how to connect to a Bluetooth LE peripheral via Web Bluetooth, using the p5.ble library. This is an adaptation of the p5.ble <a href="https://itpnyu.github.io/p5ble-website/docs/getstarted.html">Getting Started</a> script. This script works with <a href="https://github.com/arduino-libraries/ArduinoBLE/tree/master/examples/Peripheral/ButtonLED">this example</a> for the <a href="https://www.arduino.cc/en/Reference/ArduinoBLE">ArduinoBLE library</a>. 
+  </p>
+  <p>Click the connect button to search for BLE peripherals.</p>
+  <input type="button" id="connect" value="connect"><br>
+  <div id="messages"></div>
+</body>
+
+</html>

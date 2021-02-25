@@ -1,0 +1,8 @@
+input {
+  position: sticky;
+  left: 120px;
+}
+
+body {
+  background-color:rgb(0,255,255);
+}

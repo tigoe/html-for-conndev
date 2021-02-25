@@ -285,9 +285,13 @@ Useful links:
 * [Sensor APIs Introduction](https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs)
 
 ### Web Bluetooth
+You can connect to Bluetooth devices in Chrome, Edge, and Opera and various Android browsers. The Web API makes this possible. Yining Shi and Jingwen Zhu's [p5.ble library](https://itpnyu.github.io/p5ble-website/) simplifies the Web Bluetooth API, and is developed to work with [p5.js](https://p5js.org/), but can be used on its own as well. In the links below are some adaptations of the p5.ble examples to work without p5.js. 
+
 Useful links:
 * [WebBluetooth](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API)
 * [p5.BLE.js](https://itpnyu.github.io/p5ble-website/) - a p5.js API for Bluetooth LE
+* p5.ble [ButtonLED example](bluetooth-p5ble/ButtonLED/index.html)
+* p5.ble [Read One Characteristic example](bluetooth-p5ble/ReadOneCharacteristic/index.html)
 
 ### WebMIDI
 Useful links:
