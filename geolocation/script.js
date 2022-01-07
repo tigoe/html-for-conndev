@@ -12,7 +12,7 @@ let header;
 function setup(event) {
   header = document.getElementById('location');
   if (navigator.geolocation) {
-    header.innerHTML = 'Lookng for you...';
+    header.innerHTML = 'Looking for you...';
     navigator.geolocation.getCurrentPosition(showPosition, showError);
   } else {
     header.innerHTML = 'Your browser does not support geolocation.';
