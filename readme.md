@@ -2,7 +2,7 @@
 # HTML for Connected Devices
 Operating a digital device without a screen is a challenge. Screens are expensive components to add if you're designing a household device like a connected speaker or an air purifier, so many device designers use a connection between the device and your mobile device or personal computer to provide a screen interface. This has its own complications, most importantly:
 
-*  How do the devices connect? 
+* How do the devices connect? 
 * With multiple operating systems, how do you program the device with the screen?
 
 Most screen-based computers have a web browser on them, making HTML and web connections an easy way to approach this problem. What follows is an introduction to just enough web development to make screen-based interfaces for many connected devices, and a collection of techniques for quick development of those interfaces.
@@ -285,7 +285,9 @@ Useful links:
 * [Sensor APIs Introduction](https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs)
 
 ### Web Bluetooth
-You can connect to Bluetooth devices in Chrome, Edge, and Opera and various Android browsers. The Web API makes this possible. Yining Shi and Jingwen Zhu's [p5.ble library](https://itpnyu.github.io/p5ble-website/) simplifies the Web Bluetooth API, and is developed to work with [p5.js](https://p5js.org/), but can be used on its own as well. In the links below are some adaptations of the p5.ble examples to work without p5.js. 
+The Web Bluetooth API makes it possible to connect to Bluetooth devices through some browsers.Yining Shi and Jingwen Zhu's [p5.ble library](https://itpnyu.github.io/p5ble-website/) simplifies the Web Bluetooth API, and is developed to work with [p5.js](https://p5js.org/), but can be used on its own as well. In the links below are some adaptations of the p5.ble examples to work without p5.js. 
+
+Unfortunately Web Bluetooth does not work on every browser, particularly on mobile platforms. However, these examples have been tested successfully on Chrome on MacOS and Windows; Chrome on Android, and [WebBLE](https://apps.apple.com/us/app/webble/id1193531073) on iOS. Supposedly they should work on Opera and Edge as well.
 
 Useful links:
 * [WebBluetooth](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API)
