@@ -23,13 +23,13 @@ function setup() {
   // user text input:
   const textInput = document.getElementById("txt");
   textInput.addEventListener("keyup", readTextInput);
-// user range input:
+  // user range input:
   const slider = document.getElementById("dim");
   slider.addEventListener("change", readRangeInput);
-// port open/close button:
+  // port open/close button:
   portButton = document.getElementById("portButton");
   portButton.addEventListener("click", openClosePort);
-// span for incoming serial messages
+  // span for incoming serial messages
   readingsSpan = document.getElementById("readings");
 }
 
@@ -105,10 +105,13 @@ async function listenForSerial() {
       let inString = new TextDecoder().decode(value);
 
       // if it's JSON, do this:
-      //let jsonInput = JSON.parse(inString);
-
-      // if it's not, just use it:
-      readingsSpan.innerHTML = inString;
+      let jsonInput = JSON.parse(inString);
+      if (jsonInput) {
+        readingsSpan.innerHTML = jsonInput.secs;
+      } else {
+        // if it's not, just use it:
+        readingsSpan.innerHTML = inString;
+      }
     } catch (error) {
       console.log(error);
     } finally {
