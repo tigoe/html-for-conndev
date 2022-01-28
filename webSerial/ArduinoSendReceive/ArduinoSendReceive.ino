@@ -15,7 +15,7 @@ void loop() {
   }
 
 // send the seconds as a JSON string:
-  if (millis() - lastSecond > 1000) {
+  if (millis() - lastSecond > 10000) {
     Serial.print("{\"secs\": ");
     Serial.print(millis() / 1000);
     Serial.println("}");

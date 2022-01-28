@@ -22,7 +22,7 @@
       parse a string as a JSON ojbect.   
       </p>
       
-      <p>If you'd like to see the source code, it's <a href="https://github.com/tigoe/html-for-conndev/tree/main/webSerial">here on gitHub</a>. </p>
+      <p>If you'd like to see the source code, it's <a href="https://github.com/tigoe/html-for-conndev/tree/main/webSerial">here on gitHub</a>. There's an Arduino sketch in that directory that will work with this page. It will echo back whatever you send it, and once a second, it will send you the number of seconds since it started as a JSON string.</p>
 
       Here is a <a href="https://web.dev/serial/">helpful introduction to WebSerial</a>. Most of this script was based
       on that tutorial.
@@ -33,6 +33,7 @@
           <button id="portButton">open port</button><br>
       Latest input from the serial port:
       <span id="readings">no input yet </span><br>
+      Seconds passed:<span id="seconds">no seconds yet</span><br>
       Slide the slider:
       <input type="range" id="dim" min="0" max="255" value="10" /><br />
       Type a string, then hit enter:

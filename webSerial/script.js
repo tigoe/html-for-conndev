@@ -17,6 +17,7 @@ let serialReadPromise;
 // the DOM elements that might be changed by various functions:
 let portButton;
 let readingsSpan;
+let timeSpan;
 
 function setup() {
   // get the DOM elements and assign any listeners needed:
@@ -31,6 +32,9 @@ function setup() {
   portButton.addEventListener("click", openClosePort);
   // span for incoming serial messages
   readingsSpan = document.getElementById("readings");
+  // span for incoming serial messages
+  timeSpan = document.getElementById("seconds");
+
 }
 
 async function openClosePort() {
@@ -103,18 +107,16 @@ async function listenForSerial() {
       const { value, done } = await reader.read();
       // convert the result to a text string:
       let inString = new TextDecoder().decode(value);
-
-      // if it's JSON, do this:
-      try {
-        let jsonInput = JSON.parse(inString);
-          readingsSpan.innerHTML = jsonInput.secs;
-      } catch (error){
- // if it's not, just use it:
- readingsSpan.innerHTML = inString;
- console.log(error);
+      // Put the string in a span:
+      readingsSpan.innerHTML = inString;
+      // if it's not JSON, you can skip to the catch below.
+      // if it's JSON, parse it:
+      let jsonInput = JSON.parse(inString);
+      // if you've got a valid object with
+      // the property you want:
+      if (jsonInput.secs) {
+        timeSpan.innerHTML = jsonInput.secs;
       }
-      
-      
     } catch (error) {
       console.log(error);
     } finally {
