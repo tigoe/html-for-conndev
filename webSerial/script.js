@@ -105,13 +105,16 @@ async function listenForSerial() {
       let inString = new TextDecoder().decode(value);
 
       // if it's JSON, do this:
-      let jsonInput = JSON.parse(inString);
-      if (jsonInput) {
-        readingsSpan.innerHTML = jsonInput.secs;
-      } else {
-        // if it's not, just use it:
-        readingsSpan.innerHTML = inString;
+      try {
+        let jsonInput = JSON.parse(inString);
+          readingsSpan.innerHTML = jsonInput.secs;
+      } catch (error){
+ // if it's not, just use it:
+ readingsSpan.innerHTML = inString;
+ console.log(error);
       }
+      
+      
     } catch (error) {
       console.log(error);
     } finally {
