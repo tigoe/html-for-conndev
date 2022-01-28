@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-     <link rel="stylesheet" href="styles.css">
- 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="script.js"></script>
-    <title>WebSerial</title>
-  </head>
-  <body>
-    <h1>WebSerial Example</h1>
-    <section id="explanation">
- <p>
-   This page sends out a serial port using the WebSerial interface. It should work on Chrome and Edge browsers. 
-      </p>     
-      <p>
-      To open a port, Click the "open port" button and pick a port. To close that port, click the button again. 
-      You can open and close the port multiple times, but you can only open one port at a time. 
-      This page sends and receives ascii-encoded strings. There's also a commented-out option showing how to
-      parse a string as a JSON ojbect.   
-      </p>
-      
-      <p>If you'd like to see the source code, it's <a href="https://github.com/tigoe/html-for-conndev/tree/main/webSerial">here on gitHub</a>. There's an Arduino sketch in that directory that will work with this page. It will echo back whatever you send it, and once a second, it will send you the number of seconds since it started as a JSON string.</p>
 
+<head>
+  <link rel="stylesheet" href="styles.css">
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="script.js"></script>
+  <title>WebSerial</title>
+</head>
+
+<body>
+  <h1>WebSerial Example</h1>
+  <section id="explanation">
+    <p>
+      This page sends out a serial port using the WebSerial interface. It should work on Chrome and Edge browsers.
+    </p>
+    <p>
+      To open a port, Click the "open port" button and pick a port. To close that port, click the button again.
+      You can open and close the port multiple times, but you can only open one port at a time.
+      This page sends and receives ascii-encoded strings. There's also a commented-out option showing how to
+      parse a string as a JSON ojbect.
+    </p>
+
+    <p>If you'd like to see the source code, it's <a
+        href="https://github.com/tigoe/html-for-conndev/tree/main/webSerial">here on gitHub</a>. There's an Arduino
+      sketch in that directory that will work with this page. It will echo back whatever you send it, and once a second,
+      it will send you the number of seconds since it started as a JSON string.</p>
+    <p>
       Here is a <a href="https://web.dev/serial/">helpful introduction to WebSerial</a>. Most of this script was based
       on that tutorial.
-      </p>
-          </section>
+    </p>
+  </section>
 
-    <section id="controls">
-          <button id="portButton">open port</button><br>
-      Latest input from the serial port:
-      <span id="readings">no input yet </span><br>
-      Seconds passed:<span id="seconds">no seconds yet</span><br>
-      Slide the slider:
-      <input type="range" id="dim" min="0" max="255" value="10" /><br />
-      Type a string, then hit enter:
-      <input type="text" id="txt"/>
-    </section>
-  </body>
+  <section id="controls">
+    <button id="portButton">open port</button><br>
+    Latest input from the serial port:
+    <span id="readings">no input yet </span><br>
+    Seconds passed:<span id="seconds">no seconds yet</span><br>
+    Slide the slider:
+    <input type="range" id="dim" min="0" max="255" value="10" /><br />
+    Type a string, then hit enter:
+    <input type="text" id="txt" />
+  </section>
+</body>
+
 </html>
