@@ -1,0 +1,27 @@
+body {
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 12pt;
+  line-height: normal;
+}
+
+input {
+  position: sticky;
+  left: 250px;
+}
+
+span {
+  position: sticky;
+  left: 250px;
+}
+
+section#explanation {
+  width: 600px;
+}
+
+section#controls {
+  padding: 20px;
+}
+
+figcaption {
+  font-style: italic;
+}
