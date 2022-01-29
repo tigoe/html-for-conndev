@@ -297,10 +297,16 @@ Useful links:
 * p5.ble [ButtonLED example](bluetooth-p5ble/ButtonLED/index.html)
 * p5.ble [Read One Characteristic example](bluetooth-p5ble/ReadOneCharacteristic/index.html)
 
+### WebSerial
+Useful links:
+* [WebSerial](https://developer.mozilla.org/en-US/docs/Web/API/Serial)
+* [WebSerial example](webSerial) (plain JS)
+* [WebSerial example](webSerial/webSerial-p5) (p5.js)
+
 ### WebMIDI
 Useful links:
 * [WebMIDI](https://www.w3.org/TR/webmidi/)
-* [p5.js WebMIDI examples](https://github.com/tigoe/SoundExamples/tree/master/WebMidi_Examples)
+* [p5.js WebMIDI examples](https://github.com/tigoe/SoundExamples/tree/main/WebMidi_Examples)
 
 
 ### WebUSB
