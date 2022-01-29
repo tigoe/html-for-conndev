@@ -1,10 +1,9 @@
-/*
-WebSerial example
-Reads from a webSerial serial port, and writes to it.
-Works on Chrome and Edge and Opera browsers. 
+/* webSerial in p5.js
+  This sketch shows how to combine the webSerial API
+  and p5.js
 
-created 28 Jan 2022
-by Tom Igoe
+  created 28 Jan 2022
+  by Tom Igoe
 */
 
 // Serial port elements:
@@ -16,25 +15,26 @@ let serialReadPromise;  // Promise for the listenForSerial function
 
 // the DOM elements that might be changed by various functions:
 let portButton;   // the open/close port button
-let readingsSpan; // DOM element where the incoming readings go
-let timeSpan;     // DOM element for one special reading
+let textToSend = '';
+let receivedText = '';
+let timeText = '';
 
 function setup() {
-  // get the DOM elements and assign any listeners needed:
-  // user text input:
-  const textInput = document.getElementById("txt");
-  textInput.addEventListener("keyup", readTextInput);
-  // user range input:
-  const slider = document.getElementById("dim");
-  slider.addEventListener("change", readRangeInput);
+  createCanvas(400, 300);
   // port open/close button:
-  portButton = document.getElementById("portButton");
-  portButton.addEventListener("click", openClosePort);
-  // span for incoming serial messages:
-  readingsSpan = document.getElementById("readings");
-  // span for incoming serial messages:
-  timeSpan = document.getElementById("seconds");
+  portButton = createButton('open port');
+  portButton.position(10, 10);
+  portButton.mousePressed(openClosePort);
+  textSize(18);
 }
+
+function draw() {
+  background(255);
+  text('To send: ' + textToSend, 10, 50);
+  text('Received: ' + receivedText, 10, 80);
+  text('Seconds: ' + timeText, 10, 110);
+}
+
 
 async function openClosePort() {
   // if the browser supports serial:
@@ -50,7 +50,7 @@ async function openClosePort() {
       // close the serial port itself:
       await port.close();
       // change the button label:
-      portButton.innerHTML = "open port";
+      portButton.html("open port");
       // clear the port variable:
       port = null;
     } else {
@@ -65,7 +65,7 @@ async function openClosePort() {
         // start the listenForSerial function:
         serialReadPromise = listenForSerial();
         // change the button label:
-        portButton.innerHTML = "Close port";
+        portButton.html("Close port");
       } catch (err) {
         // if there's an error opening the port:
         console.error("There was an error opening the serial port:", err);
@@ -74,21 +74,25 @@ async function openClosePort() {
   }
 }
 
-function readTextInput(event) {
+function keyReleased() {
   // this function is triggered with every keystroke in the input field.
-  // listen for the enter key (keyCode = 13) and skip the rest of
+  // listen for the enter key (keyCode = 13) 
+  // add to the textToSend and skip the rest of
   // the function if you get any other key:
-  if (event.keyCode != 13) {
+  if (keyCode != 13) {
+    textToSend += key;
     return;
   }
-  // if you do get an enter keyCode, send the value of the field
-  // out the serial port:
-  sendData(event.target.value);
+  // if you do get an enter keyCode, send
+  // texToSend out the serial port:
+  sendData(textToSend);
+  textToSend = '';
 }
 
-function readRangeInput(event) {
-  // send the range input's value out the serial port:
-  sendData(event.target.value);
+function mouseReleased() {
+  // send the mouseX out the serial port:
+  textToSend = mouseX;
+  sendData(mouseX);
 }
 
 async function sendData(data) {
@@ -115,15 +119,15 @@ async function listenForSerial() {
       const { value, done } = await reader.read();
       // convert the input to a text string:
       let inString = new TextDecoder().decode(value);
-      // Put the string in a span:
-      readingsSpan.innerHTML = inString;
+      // Put the string into receivedText:
+      receivedText = inString;
       // if it's not JSON, you can skip to the catch below.
       // if it's JSON, parse it:
       let jsonInput = JSON.parse(inString);
       // if you've got a valid object with the property you want:
       if (jsonInput.secs) {
-        // put it in the time span element of the DOM:
-        timeSpan.innerHTML = jsonInput.secs;
+        // put it in timeText:
+        timeText = jsonInput.secs;
       }
     } catch (error) {
       // if there's an error reading the port:
@@ -135,6 +139,3 @@ async function listenForSerial() {
     }
   }
 }
-
-// run the setup function when all the page is loaded:
-document.addEventListener("DOMContentLoaded", setup);
