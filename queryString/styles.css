@@ -1,3 +1,13 @@
+@media screen and (max-width: 600px) {
+  body {
+      font-family: 'Helvetica', 'Arial', sans-serif;
+      /* calculate the font size based on the view width:  */
+      font-size: calc(18px + 6 * ((100vw) / 320));
+      /* for comparison, see what 24px looks like: */
+      /* font-size: 24px; */
+  }
+}
+
 body {
   font-family: "Noto Sans", "Arial", sans-serif;
   font-size: 12pt;
