@@ -240,7 +240,7 @@ Unlike regular HTTP requests, every WebSocket connection has a session state tha
 
 In order to use WebSockets, your server must support WebSocket connections. 
 
-The W3C WebSocket API is a part of the core JavaScript API, available in all browsers. There is a [WebSocket client example](websocket/) in this repository that connects to [websocket.org's](https//www.websocket.org) test WebSocket server. There is another popular API, socket.io, which implements WebScoekts slightly differently than the W3C standard. The socket.io API is mostly, but not totally, compatible with the standard.
+The W3C WebSocket API is a part of the core JavaScript API, available in all browsers. There is a [WebSocket client example](websocket/) in this repository that connects to [Lob's](https//echo.websocket.events) test WebSocket server. There is another popular API, socket.io, which implements WebSockets slightly differently than the W3C standard. The socket.io API is mostly, but not totally, compatible with the standard.
 
 ### MQTT
 Message Queueing Telemetry Transfer, or [MQTT](https://mqtt.org/), is a lightweight network protocol for communication between devices. It's designed to support equipment that may not always be online, like automated devices built with microcontrollers. It offers the two-way communication possibilities of WebSockets without the need to maintain session state. 
