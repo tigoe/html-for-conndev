@@ -9,6 +9,7 @@
 }
 
 body {
+  max-width: 600px;
   font-family: "Noto Sans", "Arial", sans-serif;
   font-size: 12pt;
   line-height: normal;
