@@ -1,7 +1,8 @@
 body {
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "Noto Sans", "Arial", sans-serif;
   font-size: 12pt;
   line-height: normal;
+  width: 600px;
 }
 
 input {
@@ -12,10 +13,6 @@ input {
 span {
   position: sticky;
   left: 250px;
-}
-
-section#explanation {
-  width: 600px;
 }
 
 section#controls {
