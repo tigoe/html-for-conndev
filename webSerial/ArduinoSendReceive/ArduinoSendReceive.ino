@@ -5,6 +5,9 @@ void setup() {
   // set a parsing timeout of 10ms
   // (used by Serial.readString, parseInt, etc):
   Serial.setTimeout(10);
+  // wait 3 secs if no remote serial connection is open:
+  if (!Serial) delay(3000);
+  Serial.println("Hello");
 }
 
 void loop() {
