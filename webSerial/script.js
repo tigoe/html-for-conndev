@@ -54,6 +54,7 @@ async function openClosePort() {
 function readInput(event) {
   readingsSpan.innerHTML = event.detail;
 }
+
 function readTextInput(event) {
   // this function is triggered with every keystroke in the input field.
   // listen for the enter key (keyCode = 13) and skip the rest of

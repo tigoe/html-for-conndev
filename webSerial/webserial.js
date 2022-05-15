@@ -94,7 +94,8 @@ async function listenForSerial() {
         const event = new CustomEvent('data', {
           detail: inString
         });
-        webserial.dispatchEvent(event);
+        // fire the event:
+        this.dispatchEvent(event);
       }
       if (done) {
         break;
