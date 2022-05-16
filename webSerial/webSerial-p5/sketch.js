@@ -25,9 +25,7 @@ async function setup() {
   webserial = new WebSerialPort();
   if (webserial) {
     webserial.on("data", serialRead);
-    webserial.on("connect", openClosePort);
-    webserial.on("disconnect", openClosePort);
-
+  
     // port open/close button:
     portButton = createButton('open port');
     portButton.position(10, 10);
@@ -71,7 +69,7 @@ async function openClosePort() {
   // label for the button will change depending on what you do:
   let buttonLabel = "Open port";
   // if port is open, close it; if closed, open it:
-  if (port) {
+  if (webserial.port) {
     await webserial.closePort();
   } else {
     await webserial.openPort();

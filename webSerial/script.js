@@ -31,9 +31,7 @@ function setup() {
   webserial = new WebSerialPort();
   if (webserial) {
     webserial.on("data", serialRead);
-    webserial.on("connect", openClosePort);
-    webserial.on("disconnect", openClosePort);
-    // port open/close button:
+     // port open/close button:
      portButton = document.getElementById("portButton");
      portButton.addEventListener("click", openClosePort);
    }
