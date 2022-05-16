@@ -2,6 +2,12 @@
   This sketch shows how to combine the webSerial API
   and p5.js
 
+  TODO:
+  * Get open/close port handlers working properly
+  in sketches
+  * make autoOpen selectable
+  * finish all onEvent handlers in API
+  * 
   created 28 Jan 2022
   by Tom Igoe
 */
@@ -11,19 +17,22 @@ let portButton;   // the open/close port button
 let textToSend = '';
 let receivedText = '';
 let timeText = '';
+let webserial;
 
 async function setup() {
   createCanvas(400, 300);
-  if ("serial" in navigator) {
-    // set up event listeners for serial device connect and disconnect:
-    navigator.serial.addEventListener("connect", serialConnect);
-    navigator.serial.addEventListener("disconnect", serialDisconnect);
-    webserial.addEventListener('data', serialRead);
+
+  webserial = new WebSerialPort();
+  if (webserial) {
+    webserial.on("data", serialRead);
+    webserial.on("connect", openClosePort);
+    webserial.on("disconnect", openClosePort);
+
     // port open/close button:
     portButton = createButton('open port');
     portButton.position(10, 10);
     portButton.mousePressed(openClosePort);
-  }
+   }
   textSize(18);
 }
 
@@ -34,7 +43,7 @@ function draw() {
 }
 
 function serialRead(event) {
-  receivedText = event.detail;
+  receivedText = event.detail.data;
 }
 
 function keyReleased() {
@@ -48,14 +57,14 @@ function keyReleased() {
   }
   // if you do get an enter keyCode, send
   // texToSend out the serial port:
-  sendSerial(textToSend);
+  webserial.sendSerial(textToSend);
   textToSend = '';
 }
 
 function mouseReleased() {
   // send the mouseX out the serial port:
   textToSend = mouseX;
-  sendSerial(mouseX);
+  webserial.sendSerial(mouseX);
 }
 
 async function openClosePort() {
@@ -63,9 +72,9 @@ async function openClosePort() {
   let buttonLabel = "Open port";
   // if port is open, close it; if closed, open it:
   if (port) {
-    await closePort();
+    await webserial.closePort();
   } else {
-    await openPort();
+    await webserial.openPort();
     buttonLabel = "Close port";
   }
   // change button label:

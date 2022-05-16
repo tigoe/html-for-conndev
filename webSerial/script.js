@@ -13,17 +13,9 @@ by Tom Igoe
 let portButton;   // the open/close port button
 let readingsSpan; // DOM element where the incoming readings go
 let timeSpan;     // DOM element for one special reading
+let webserial;
 
 function setup() {
-  if ("serial" in navigator) {
-    // set up event listeners for serial device connect and disconnect:
-    navigator.serial.addEventListener("connect", serialConnect);
-    navigator.serial.addEventListener("disconnect", serialDisconnect);
-    webserial.addEventListener("data", readInput);
-    // port open/close button:
-    portButton = document.getElementById("portButton");
-    portButton.addEventListener("click", openClosePort);
-  }
   // get the DOM elements and assign any listeners needed:
   // user text input:
   const textInput = document.getElementById("txt");
@@ -35,24 +27,35 @@ function setup() {
   readingsSpan = document.getElementById("readings");
   // span for incoming serial messages:
   timeSpan = document.getElementById("seconds");
+  
+  webserial = new WebSerialPort();
+  if (webserial) {
+    webserial.on("data", serialRead);
+    webserial.on("connect", openClosePort);
+    webserial.on("disconnect", openClosePort);
+    // port open/close button:
+     portButton = document.getElementById("portButton");
+     portButton.addEventListener("click", openClosePort);
+   }
 }
 
 async function openClosePort() {
   // label for the button will change depending on what you do:
   let buttonLabel = "Open port";
   // if port is open, close it; if closed, open it:
-  if (port) {
-    await closePort();
+  if (webserial.port) {
+    await webserial.closePort();
   } else {
-    await openPort();
+    await webserial.openPort();
     buttonLabel = "Close port";
   }
   // change button label:
   portButton.innerHTML = buttonLabel;
 }
 
-function readInput(event) {
-  readingsSpan.innerHTML = event.detail;
+function serialRead(event) {
+  readingsSpan.innerHTML = event.detail.data
+  ;
 }
 
 function readTextInput(event) {
@@ -64,12 +67,12 @@ function readTextInput(event) {
   }
   // if you do get an enter keyCode, send the value of the field
   // out the serial port:
-  sendSerial(event.target.value);
+  webserial.sendSerial(event.target.value);
 }
 
 function readRangeInput(event) {
   // send the range input's value out the serial port:
-  sendSerial(event.target.value);
+  webserial.sendSerial(event.target.value);
 }
 
 // run the setup function when all the page is loaded:
