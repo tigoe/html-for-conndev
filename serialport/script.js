@@ -65,6 +65,11 @@ var currentValue = e;
 
 // make a serial port selector object:
 function printList(portList) {
+  // make sure portList is unique
+  portList = portList.filter(function(value, index, array) => {
+    return array.indexOf(value) === index;
+  })
+  
   // create a select object:
   portSelector = document.getElementById('portSelector');
   // portList is an array of serial port names
@@ -74,8 +79,14 @@ function printList(portList) {
     option.text = portList[i];
     portSelector.add(option);
   }
-  // set an event listener for when the port is changed:
-  portSelector.addEventListener('change', openPort);
+  
+  if (portList.length === 1) {
+    // if there is only one port (in case of PC), automatically open port
+    openPort();
+  } else {
+    // if multiple ports, set an event listener for when the port is changed:
+    portSelector.addEventListener('change', openPort);
+  }
 }
 
 function openPort() {
