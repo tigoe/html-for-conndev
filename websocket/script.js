@@ -2,13 +2,13 @@
   WebSocket connection Script
   Uses standard W3C WebSocket API, not socket.io API
   Connects to websocket.org's test server at 
-  wss://echo-websocket.hoppscotch.io
+  https://echo.websocket.events
 
   created 7 Jan 2021
-  modified 4 Sep 2022
+  modified 28 Jan 2022
   by Tom Igoe
 */
-const serverURL = 'wss://echo-websocket.hoppscotch.io';
+const serverURL = 'wss://echo.websocket.events/';
 let socket;
 // variables for the DOM elements:
 let incomingSpan;
