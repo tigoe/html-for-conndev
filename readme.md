@@ -176,7 +176,7 @@ When you're developing web interfaces, it's often useful to have a local web ser
 python -m SimpleHTTPServer
 ````
 
-On MAcOS Monterey or any other operating system running Python 3, you can use this instead:
+On MacOS Monterey or any other operating system running Python 3, you can use this instead:
 
 ````
 python -m http.server
