@@ -19,6 +19,17 @@ A minimal browser-based interface for a connected device might include a few inp
 
 By using JavaScript to manipulate the elements of the page, you can make the various text elements, like the spans, responsive to the values of the inputs, like the button or the slider. You can send those values to a web server using the JavaScript `fetch()` command, or you can use other communications protocols to send the values to connected devices. 
 
+### Client-Side JavaScript Structure
+
+A typical client-side JavaScript is structured like this:
+
+* define functions to listen for DOM events
+* add a listener function for the page load event
+
+There's not typically a main loop, as you might be used to for C or Java; all the action happens on user-generated events. You can make some timed functions using `setInterval()` or `setTimeout()`, but these are typically less common.
+
+Here's a [plain Javascript template](template/script.js). It goes with this [HTML page](template/index.html). This [style sheet](template/styles.css) is used to set the positions of the elements. 
+
 ### HTML Input Elements
 
 There are many input elements defined in the HTML5 specification, and you can use them to gather all sorts of structured data. You can both get and set the value of an input element in JavaScript.
@@ -27,11 +38,11 @@ Here's a [page with all of the input elements](input-types/index.html). Changing
 
 In addition to these, there are a few other forms of input that do not use the `<input>` tag, like` <textarea>`, `<select>` and `<option>`. 
 
-Inputs are often enclosed in forms, which allow you to access all of the elements of a form in one collection. When you do this, it's good practice to give each element a name attribute, as the element names will be sent in name/va;ue pairs as part of the request when you submit the form. 
+Inputs are often enclosed in forms, which allow you to access all of the elements of a form in one collection. When you do this, it's good practice to give each element a name attribute, as the element names will be sent in name/value pairs as part of the request when you submit the form. 
 
-[Form elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) have many attributes, but the most important are the action, which is the server URL that will process the form information when you submit it. the method, which determines how the HTTP request is sent (GET, POST, etc), and the target, which determines which window or tab the results of the form request will be displayed in. 
+[Form elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) have many attributes, but the most important are the action, which is the server URL that will process the form information when you submit it. The method, which determines how the HTTP request is sent (GET, POST, etc), and the target, which determines which window or tab the results of the form request will be displayed in. 
 
-You can use a form without giving it an action if you simply want a structure for collecting all the input elements' values. In the input-types example in this repository, the form is used as a convenient way to iterate over all the inputs to clear them in the `clearValues()` [function in the JavaScript](input-types/script.js). 
+You can use a form without giving it an action if you simply want a structure for collecting all the input elements' values. In the [input types example](https://github.com/tigoe/html-for-conndev/blob/main/input-types/index.html) in this repository, the form is used as a convenient way to iterate over all the inputs to clear them in the `clearValues()` [function in the JavaScript](input-types/script.js). 
 
 For more on input elements, see the [MDN Input Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) page. 
 
@@ -72,18 +83,6 @@ function getValue(event) {
 
 Adding event listeners takes more typing, but it lets you keep your elements' behaviors (defined in JavaScript) separate from their properties (defined in HTML) and their styles (defined in CSS).
 
-### Client-Side JavaScript Structure
-
-A typical client-side JavaScript is structured like this:
-
-* define functions to listen for DOM events
-* add a listener function for the page load event
-
-There's not typically a main loop, as you might be used to for C or Java; all the action happens on user-generated events. You can make some timed functions using `setInterval()` or `setTimeout()`, but these are typically less common.
-
-Here's a [plain Javascript template](template/script.js). It goes with this [HTML page](template/index.html). This [style sheet](template/styles.css) is used to set the positions of the elements. 
-
-
 ### DOM Manipulation in JavaScript
 
 Every JS library has its own shortcuts for manipulating DOM elements in JavaScript, but it's not that hard to do without a library. DOM elements are sub-elements (sometimes called children) of the HTML `document` element, and there are various JS functions for getting them:
@@ -97,7 +96,7 @@ Once you've got an element, you can get or set any of its properties.
 
 ## Positioning and Layout with CSS
 
-As you saw in the [input elements example](input-types/index.html) and the [air purifier example](purifier.html) page, the elements of a page need to be laid out in a readable way. The HTML document defines what elements will be in a page, but it doesn define their positions. Without some instructions, elments follow each other one after another. The CSS page for each of those examples defines the elements positions. 
+As you saw in the [input elements example](input-types/index.html) and the [air purifier example](purifier.html) page, the elements of a page need to be laid out in a readable way. The HTML document defines what elements will be in a page, but it doesn't define their positions. Without some instructions, elments follow each other one after another. The CSS page for each of those examples defines the elements positions. 
 
 The purifier example combines the CSS and HTML in one page. The input types example follows a more typical pattern, separating the HTML, CSS, and JS into three documents and including the CSS and JS in the head of the HTML. 
 
@@ -170,7 +169,7 @@ You can also make adjustments based on other conditions, like the orientation of
 
 ## A Local Web Server
 
-When you're developing web interfaces, it's often useful to have a local web server to serve the files, rather than just opening them from your computer's filesystem. For example, you might want to open the file on a mobile phone or tablet. A quick solution for this that's installed by default on MAcOS, Windows 10, and Linux is Python's SimpleHTTPServer script. You can start it from the command line (MacOS Terminal; Windows Powershell) by changing directories to the directory where your HTML files are and typing:
+When you're developing web interfaces, it's often useful to have a local web server to serve the files, rather than just opening them from your computer's filesystem. For example, you might want to open the file on a mobile phone or tablet. A quick solution for this that's installed by default on MacOS, Windows 10, and Linux is Python's SimpleHTTPServer script. You can start it from the command line (MacOS Terminal; Windows Powershell) by changing directories to the directory where your HTML files are and typing:
 
 ````
 python -m SimpleHTTPServer
@@ -190,7 +189,7 @@ Serving HTTP on 0.0.0.0 port 8000 ...
 
 Then you can open a browser and enter `http://localhost:8000` or your computer's IP address followed by `:8000` to see your files. To stop the server, type control-C.
 
-You'll often need to know your computer's IP address as well. You can get this from your system's control panel, or on the command line using the ifconfig on MAcOS or Linux, and ipcommand on Windows. Look for the IP address of your WiFi interface. On MacOS, it's called `en0`; on Windows 10, `Wireless LAN Adapter Wi-Fi`; on Linux, usually `wlan0`. If your computer's IP address is something like 192.168.1.10, you'd enter `http://192.168.1.10:8000` in the browser's address bar to get your files. 
+You'll often need to know your computer's IP address as well. You can get this from your system's control panel, or on the command line using the `ifconfig` on MacOS or Linux, and `ipcommand` on Windows. Look for the IP address of your WiFi interface. On MacOS, it's called `en0`; on Windows 10, `Wireless LAN Adapter Wi-Fi`; on Linux, usually `wlan0`. If your computer's IP address is something like 192.168.1.10, you'd enter `http://192.168.1.10:8000` in the browser's address bar to get your files. 
 
 ## Communications Protocols
 
@@ -247,7 +246,7 @@ Unlike regular HTTP requests, every WebSocket connection has a session state tha
 
 In order to use WebSockets, your server must support WebSocket connections. 
 
-The W3C WebSocket API is a part of the core JavaScript API, available in all browsers. There is a [WebSocket client example](websocket/) in this repository that connects to [Lob's](https//echo.websocket.events) test WebSocket server. There is another popular API, socket.io, which implements WebSockets slightly differently than the W3C standard. The socket.io API is mostly, but not totally, compatible with the standard.
+The W3C WebSocket API is a part of the core JavaScript API, available in all browsers. There is a [WebSocket client example](websocket/) in this repository that connects to [Postman's](https://blog.postman.com/introducing-postman-websocket-echo-service/) test WebSocket server. There is another popular API, socket.io, which implements WebSockets slightly differently than the W3C standard. The socket.io API is mostly, but not totally, compatible with the standard.
 
 For more on WebSockets, see [this repository](https://tigoe.github.io/websocket-examples/). 
 
@@ -273,7 +272,7 @@ As the web has become ubiquitous, developers have seen the value of using it as 
 
 Google/Alphabet has done considerable work on setting standards for browser interfaces to hardware. They have developed APIs for [WebBluetooth](https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API), [WebMIDI](https://www.w3.org/TR/webmidi/), [WebUSB](https://developer.mozilla.org/en-US/docs/Web/API/USB), and are working on [WebNFC](https://w3c.github.io/web-nfc/). All of these are available in the Chrome browser, and some are available to other browsers as well. 
 
-MDn maintins a list of all [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API) and their current states. 
+MDN maintains a list of all [Web APIs](https://developer.mozilla.org/en-US/docs/Web/API) and their current states. 
 
 ### Geolocation
 If the device that your browser is on has geolocation capability, it can be accessed via the [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API). Here is a [geolocation example](geolocation/).
@@ -287,7 +286,7 @@ The W3C defines a number of different sensor APIs to access the various sensors 
 * Magnetometer
 * OrientationSensor
 
-Here's an example that runs all the sensors: [sensor tests](sensor-tests) (also hosted on [Glitch](https://glitch.com/edit/#!/sensor-tests))
+Here's an example that runs all the sensors: [sensor tests](sensor-tests) (also hosted on [Glitch](https://sensor-tests.glitch.me/))
 
 Useful links:
 * [Sensor](https://developer.mozilla.org/en-US/docs/Web/API/Sensor)
