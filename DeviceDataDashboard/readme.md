@@ -1,8 +1,7 @@
 # Connected Device Data Dashboard
 
-The examples in this directory show how to connect a WiFi-connected microcontroller to a web page using a few command line tools. To make the most of this tutorial, you should understand:
-* DOM structure as shown in [this template example]
-(template/)
+The examples in [this directory](https://github.com/tigoe/html-for-conndev/blob/main/DeviceDataDashboard/) show how to connect a WiFi-connected microcontroller to a web page using a few command line tools. To make the most of this tutorial, you should understand:
+* DOM structure as shown in [this template example](../template/)
 * Arduino WiFiNINA (for Nano 33, Uno WiFi, MKR1010) or WiFi101 (for MKR1000) libraries. See the WiFi_Startup and WiFi_status videos in [this showcase](https://vimeo.com/showcase/6916443) for an intro to the WiFiNINA library.
 
 You'll need:
