@@ -1,7 +1,21 @@
+/*
+  Data fetch script. Uses Fetch to get a text file
+  every five seconds, and fill its contents into 
+  a div on the HTML page. 
+
+  Based on my fetch example (https://tigoe.github.io/html-for-conndev/fetch/). 
+
+  created 30 Dec 2022
+  by Tom Igoe
+*/
+
+// this function is called once on page load (see below):
 function setup() {
+  // set an interval to run fetchText() every 5 seconds:
   setInterval(fetchText, 5000);
 }
 
+// make an HTTP call to get a text file:
 function fetchText() {
   // parameters for the HTTP/S call
   let params = {

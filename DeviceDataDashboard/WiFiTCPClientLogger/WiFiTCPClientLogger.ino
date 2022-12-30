@@ -1,12 +1,16 @@
 /*
   WiFi TCP Client
-  TCP Socket client for ArduinoHttpClient library
+  TCP Socket client for WiFiNINA and WiFi101 libraries.
   Connects to the TCP socket server, reads a sensor once
   every five seconds, and sends a message with the reading.
   Uses the following libraries:
   http://librarymanager/All#WiFiNINA.h  for Nano 33 IoT, MKR1010
   or
   http://librarymanager/All#WiFi101.h  for MKR1000
+
+  You'll need to include an arduino_secrets.h file with the following info:
+  #define SECRET_SSID "ssid"      // your network name
+  #define SECRET_PASS "password"  // your network password
 
   Here's a test with netcat: 
   char serverAddress[] = "x.x.x.x";  // replace with your computer's IP
@@ -25,7 +29,9 @@
 // Initialize the Wifi client library
 WiFiClient client;
 
-const char server[] = "192.168.1.165";
+// replace with your host computer's IP address
+const char server[] = "0.0.0.0";
+const int portNum = 8080;
 // message sending interval, in ms:
 int interval = 5000;
 // last time a message was sent, in ms:
@@ -43,7 +49,6 @@ void setup() {
     Serial.println(SECRET_SSID);
     // Connect to WPA/WPA2 network.
     WiFi.begin(SECRET_SSID, SECRET_PASS);
-
     // wait 3 seconds for connection:
     delay(3000);
   }
@@ -53,7 +58,8 @@ void loop() {
   // if the client's not connected, connect:
   if (!client.connected()) {
     Serial.println("connecting");
-    client.connect(server, 8080);
+    client.connect(server, portNum);
+    // skip the rest of the loop:
     return;
   }
   // once every interval, get a reading and send it:
@@ -70,7 +76,7 @@ void loop() {
     lastSend = millis();
   }
 
-  // check there is incoming data available to be received
+  // check if there is incoming data available to be received
   int messageSize = client.available();
   // if there's a string with length > 0:
   if (messageSize > 0) {
