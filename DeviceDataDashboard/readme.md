@@ -1,8 +1,9 @@
 # Connected Device Data Dashboard
 
 The examples in this directory show how to connect a WiFi-connected microcontroller to a web page using a few command line tools. To make the most of this tutorial, you should understand:
-* DOM structure as shown in this template example
-* Arduino WiFiNINA (for Nano 33, Uno WiFi, MKR1010) or WiFi101 (for MKR1000) libraries. See the WiFi_Startup and WiFi_status videoss in [this showcase](https://vimeo.com/showcase/6916443) for an intro to the WiFiNINA library.
+* DOM structure as shown in [this template example]
+(template/)
+* Arduino WiFiNINA (for Nano 33, Uno WiFi, MKR1010) or WiFi101 (for MKR1000) libraries. See the WiFi_Startup and WiFi_status videos in [this showcase](https://vimeo.com/showcase/6916443) for an intro to the WiFiNINA library.
 
 You'll need:
 * WiFi connected Arduino. Nano 33, Uno WiFi, MKR1010, or MKR1000 will work.
@@ -10,7 +11,7 @@ You'll need:
 
 ## TCP Socket Connections
 
-The Arduino WiFi libraries are capable of making transport-layer connections to remote hosts via TCP and UDP. The [WiFiTCPClientLogger example]() shows how to make a TCP connection to a remote host on port 8080, and to send data as a JSON string once every five seconds. 
+The Arduino WiFi libraries are capable of making transport-layer connections to remote hosts via TCP and UDP. The [WiFiTCPClientLogger example](https://github.com/tigoe/html-for-conndev/blob/main/DeviceDataDashboard/WiFiTCPClientLogger/WiFiTCPClientLogger.ino) shows how to make a TCP connection to a remote host on port 8080, and to send data as a JSON string once every five seconds. 
 
 ### Connecting to Netcat 
 
@@ -30,7 +31,7 @@ This will start netcat listening for incoming TCP connections on port 8080. Afte
 {"sensor": 400}
 {"sensor": 396}
 ````
-Type control-C to stop netcat. This takes over your command line, so you can run it in the background like so:
+Type `control-C` to stop netcat. This takes over your command line, so you can run it in the background like so:
 
 ````
 $ nc -l 8080 &
@@ -60,7 +61,7 @@ You can redirect the output of any process using the redirect operators `>` and 
 $ nc -l 8080 >> log.json &
 ````
 
-If you open the file with a text editor, you'll see the latest readings. 
+If you open the file with a text editor, you'll see the latest readings. It will look like [this example](dashboard/log.json). 
 
 You can also fork the output from the program to both a file and to the command line using the `tee` command. Here's how:
 
@@ -97,4 +98,4 @@ nc -l 8080 >> log.json & python -m http.server
 
 5. open the index page in a browser by going to `http://localhost:8000`.  
 
-Now you've got a rudmimentary HTML dashboard for your data. Once you've fetched the data file, you can customize the display of it in HTML and JS as much as you wish. You can see the page in action at this lin. A short log.json file resides in the same directory so you can see a little data. 
+Now you've got a rudmimentary HTML dashboard for your data. Once you've fetched the data file, you can customize the display of it in HTML and JS as much as you wish. You can see the page in action at [this link](dashboard).  
