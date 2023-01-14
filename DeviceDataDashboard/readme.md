@@ -15,13 +15,36 @@ The Arduino WiFi libraries are capable of making transport-layer connections to 
 ### Connecting to Netcat 
 
 To test this on your own computer, change the IP address in the  example to your computer's IP address and then upload it to your board. Then
-open a command line interface (Terminal on MacOS, WSL on Windows) and run the netcat command like so:
+open a command line interface (Terminal on MacOS or Linux, WSL on Windows) and run the netcat command. Windows users, you may need to install netcat in the Linux shell on your Windows machine.
+
+To check that netcat is installed on any system, type:
+
+````
+$ which nc
+````
+
+_By convention, whenever you see `$` at the beginning of the line in these examples, it represents the command prompt. You don't need to type it._
+
+You'll get a reply telling you what dierectory it's installed in, like this:
+
+````
+/bin/nc
+````
+
+If it's not installed, you can install it like so: 
+
+````
+$ sudo apt install netcat
+````
+
+
+Once you know netcat is installed, you can run it to listen for incoming connections on port 8080 like so:
 
 ````
 $ nc -l 8080
 ````
 
-_By convention, whenever you see `$` at the beginning of the line in these examples, it represents the command prompt. You don't need to type it._
+
 
 This will start netcat listening for incoming TCP connections on port 8080. After a few seconds, you should see the readings from the Arduino sketch coming in. They'll look like this:
 
