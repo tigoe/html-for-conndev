@@ -11,12 +11,9 @@
   Uses a responsive CSS to adjust the size of the type as well.
 
   created 14 Feb 2021 
+  modified 9 Jun 2024
   by Tom Igoe
 */
-
-// get the network connection intefface (depends on device):
-let connection =
-  navigator.connection || navigator.mozConnection || navigator.webkitConnection;
 
 // variables for the sensors:
 let accel, gyro, light, compass;
@@ -24,12 +21,7 @@ let accel, gyro, light, compass;
 function setup() {
   // get the network type and effective network type and display them:
   var netSpan = document.getElementById("networkType");
-  netSpan.innerHTML =
-    "Network type: " +
-    connection.type +
-    "<br>Effective connection: " +
-    connection.effectiveType;
-
+  netSpan.innerHTML = "Sensors found:<br>";
   // get the error div so you can show errors:
   var errorDiv = document.getElementById("error");
 
@@ -38,6 +30,7 @@ function setup() {
     accel = new Accelerometer({ frequency: 60 });
     accel.addEventListener("reading", accelReading);
     accel.start();
+    netSpan.innerHTML += "Accelerometer started.<br>";
   } catch (error) {
     errorDiv.innerHTML += error + "<br>";
   }
@@ -46,6 +39,7 @@ function setup() {
     gyro = new Gyroscope({ frequency: 60 });
     gyro.addEventListener("reading", gyroReading);
     gyro.start();
+    netSpan.innerHTML += "Gyrometer started.<br>";
   } catch (error) {
     errorDiv.innerHTML += error + "<br>";
   }
@@ -55,6 +49,7 @@ function setup() {
     light = new AmbientLightSensor({ frequency: 60 });
     light.addEventListener("reading", lightReading);
     light.start();
+    netSpan.innerHTML += "Ambient light sensor started.<br>";
   } catch (error) {
     errorDiv.innerHTML += error + "<br>";
   }
@@ -63,6 +58,7 @@ function setup() {
     compass = new Magnetometer({ frequency: 60 });
     compass.addEventListener("reading", compassReading);
     compass.start();
+    netSpan.innerHTML += "Magnetometer started.<br>";
   } catch (error) {
     errorDiv.innerHTML += error + "<br>";
   }
