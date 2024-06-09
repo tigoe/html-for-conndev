@@ -10,7 +10,7 @@ var myData = {
   temperature: 17
 };
 // serve all the static files in the public folder:
-server.use(express.static("public"));
+server.use("/", express.static("public"));
 // use the body parser middleware:
 server.use(bodyParser.json());
 
@@ -51,6 +51,6 @@ server.get("/text", getText);
 server.post("/data", postData);
 
 // listen for requests:
-const listener = server.listen(process.env.PORT, () => {
+const listener = server.listen(8080, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
