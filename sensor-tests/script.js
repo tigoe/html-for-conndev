@@ -19,48 +19,62 @@
 let accel, gyro, light, compass;
 
 function setup() {
-  // get the network type and effective network type and display them:
   var netSpan = document.getElementById("networkType");
   netSpan.innerHTML = "Sensors found:<br>";
   // get the error div so you can show errors:
   var errorDiv = document.getElementById("error");
-
   // get the accelerometer and start it:
-  try {
-    accel = new Accelerometer({ frequency: 60 });
-    accel.addEventListener("reading", accelReading);
-    accel.start();
-    netSpan.innerHTML += "Accelerometer started.<br>";
-  } catch (error) {
-    errorDiv.innerHTML += error + "<br>";
+  if (window.Accelerometer) {
+    try {
+      accel = new Accelerometer({ frequency: 60 });
+      accel.addEventListener("reading", accelReading);
+      accel.start();
+      netSpan.innerHTML += "Accelerometer started.<br>";
+    } catch (error) {
+      errorDiv.innerHTML += error + "<br>";
+    }
+  } else {
+    errorDiv.innerHTML += "Accelerometer is not present. <br>";
   }
   // get the gyroscope and start it:
-  try {
-    gyro = new Gyroscope({ frequency: 60 });
-    gyro.addEventListener("reading", gyroReading);
-    gyro.start();
-    netSpan.innerHTML += "Gyrometer started.<br>";
-  } catch (error) {
-    errorDiv.innerHTML += error + "<br>";
+  if (window.Gyroscope) {
+    try {
+      gyro = new Gyroscope({ frequency: 60 });
+      gyro.addEventListener("reading", gyroReading);
+      gyro.start();
+      netSpan.innerHTML += "Gyrometer started.<br>";
+    } catch (error) {
+      errorDiv.innerHTML += error + "<br>";
+    }
+  } else {
+    errorDiv.innerHTML += "Gyrometer is not present. <br>";
   }
 
   // get the ambient light sensor and start it:
-  try {
-    light = new AmbientLightSensor({ frequency: 60 });
-    light.addEventListener("reading", lightReading);
-    light.start();
-    netSpan.innerHTML += "Ambient light sensor started.<br>";
-  } catch (error) {
-    errorDiv.innerHTML += error + "<br>";
+  if (window.AmbientLightSensor) {
+    try {
+      light = new AmbientLightSensor({ frequency: 60 });
+      light.addEventListener("reading", lightReading);
+      light.start();
+      netSpan.innerHTML += "Ambient light sensor started.<br>";
+    } catch (error) {
+      errorDiv.innerHTML += error + "<br>";
+    }
+  } else {
+    errorDiv.innerHTML += "Ambient Light Sensor is not present. <br>";
   }
   // get the magnetometer and start it:
-  try {
-    compass = new Magnetometer({ frequency: 60 });
-    compass.addEventListener("reading", compassReading);
-    compass.start();
-    netSpan.innerHTML += "Magnetometer started.<br>";
-  } catch (error) {
-    errorDiv.innerHTML += error + "<br>";
+  if (window.Magnetometer) {
+    try {
+      compass = new Magnetometer({ frequency: 60 });
+      compass.addEventListener("reading", compassReading);
+      compass.start();
+      netSpan.innerHTML += "Magnetometer started.<br>";
+    } catch (error) {
+      errorDiv.innerHTML += error + "<br>";
+    }
+  } else {
+    errorDiv.innerHTML += "Magnetometer is not present. <br>";
   }
   // make a QR code of the URL:
   getQrCode();
