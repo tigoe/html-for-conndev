@@ -2,3 +2,4 @@
 .DS_Store
 DeviceDataDashboard/WiFiTCPClientLogger/arduino_secrets.h
 */node_modules/*
+DeviceDataDashboard/WiFiUDPClientLogger/arduino_secrets.h
