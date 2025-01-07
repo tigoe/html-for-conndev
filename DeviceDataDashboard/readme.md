@@ -8,9 +8,10 @@ You'll need:
 * WiFi connected Arduino. Nano 33, Uno WiFi, MKR1010, or MKR1000 will work.
 * A computer with a POSIX-compatible command line interface. MacOS, Linux, or Window 10 or later running  [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) will work.
 
-## TCP Socket Connections
+## TCP Socket or UDP Packet Connections
 
-The Arduino WiFi libraries are capable of making transport-layer connections to remote hosts via TCP and UDP. The [WiFiTCPClientLogger example](https://github.com/tigoe/html-for-conndev/blob/main/DeviceDataDashboard/WiFiTCPClientLogger/WiFiTCPClientLogger.ino) shows how to make a TCP connection to a remote host on port 8080, and to send data as a JSON string once every five seconds. 
+The Arduino WiFi libraries are capable of making transport-layer connections to remote hosts via TCP and UDP. For TCP, the [WiFiTCPClientLogger example](https://github.com/tigoe/html-for-conndev/blob/main/DeviceDataDashboard/WiFiTCPClientLogger/WiFiTCPClientLogger.ino) shows how to make a TCP connection to a remote host on port 8080, and to send data as a JSON string once every five seconds. For UDP packets, the [WiFiUDPClientLogger example](https://github.com/tigoe/html-for-conndev/blob/main/DeviceDataDashboard/WiFiUDPClientLogger/WiFiUDPClientLogger.ino) does the same, but using UDP instead of TCP. You can use either one as long as you use the corresponding netcat command below. 
+
 
 ### Connecting to Netcat 
 
@@ -39,12 +40,20 @@ If it's not installed, you can install it like so:
 $ sudo apt install netcat
 ````
 
-Once you know netcat is installed, you can run it to listen for incoming connections on port 8080 like so:
+Once you know netcat is installed, you can run it to listen for incoming TCP connections on port 8080 like so:
 
 ````
-$ nc -l 8080
+$ nc -klw 2 8080
 ````
-The -l flag will start netcat listening for incoming TCP connections on port 8080. After a few seconds, you should see the readings from the Arduino sketch coming in. They'll look like this:
+The -l flag will start netcat listening for incoming TCP connections on port 8080. The -k flag tells it to listen for multiple connections, and the -w flag gives each connection a 2 second idle timeout. 
+
+If you're using UDP packets instead of TCP sockets, you call netCat like so:
+````
+$ nc -uklw 2 8080
+````
+The -u flag tells it to listen for UDP packets instead of TCP socket connections. 
+
+After a few seconds, you should see the readings from the Arduino sketch coming in. They'll look like this:
 
 ````
 {"sensor": 397}
@@ -70,6 +79,8 @@ You can get a list of all your currently running processes and their process num
 ````
 $ ps -a
 ````
+
+It doesn't matter whether you're using TCP socket connections or UDP packets for the next section, because once the data is in the log file, the HTTP server and client don't care how the data got there. 
 
 ### Logging To A File
 
