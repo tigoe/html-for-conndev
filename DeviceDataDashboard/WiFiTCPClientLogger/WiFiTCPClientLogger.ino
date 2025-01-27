@@ -31,7 +31,7 @@ WiFiClient client;
 const char server[] = "0.0.0.0";
 const int portNum = 8080;
 // change this to a unique name for the device:
-String deviceName = "myDevice";
+String deviceName = "second";
 // message sending interval, in ms:
 int interval = 5000;
 // last time a message was sent, in ms:
@@ -77,7 +77,7 @@ void loop() {
     // read sensor:
     int sensor = analogRead(A0);
     // format the message as JSON string:
-    String message = "{\"device\": DEVICE, \"sensor\": READING}";
+    String message = "{\"device\": \"DEVICE\", \"sensor\": READING}";
     // replace READING with the reading:
     message.replace("READING", String(sensor));
     // and DEVICE with your device's name:
