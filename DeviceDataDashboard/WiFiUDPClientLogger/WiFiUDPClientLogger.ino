@@ -15,6 +15,7 @@
   This will send the output to the command line and to a file called log.json
 
   created 7 Jan 2025
+  updated 27 Jan 2025
   by Tom Igoe
  */
 
@@ -69,7 +70,7 @@ void loop() {
     // read sensor:
     int sensor = analogRead(A0);
     // format the message as JSON string:
-    String message = "{\"device\": DEVICE, \"sensor\": READING}";
+    String message = "{\"device\": \"DEVICE\", \"sensor\": READING}";
     // replace READING with the reading:
     message.replace("READING", String(sensor));
     // and DEVICE with your device's name:
