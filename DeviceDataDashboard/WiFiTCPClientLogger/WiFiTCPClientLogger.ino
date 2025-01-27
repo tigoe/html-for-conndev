@@ -15,7 +15,7 @@
   This will send the output to the command line and to a file called log.json
 
   created 30 Dec 2022
-  updated 7 Jan 2025
+  updated 27 Jan 2025
   by Tom Igoe
  */
 
@@ -31,7 +31,7 @@ WiFiClient client;
 const char server[] = "0.0.0.0";
 const int portNum = 8080;
 // change this to a unique name for the device:
-String deviceName = "second";
+String deviceName = "first";
 // message sending interval, in ms:
 int interval = 5000;
 // last time a message was sent, in ms:
