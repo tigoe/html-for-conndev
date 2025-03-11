@@ -1,5 +1,13 @@
 
 function fetchJSON() {
+  // parameters for the HTTP/S call
+  let params = {
+    mode: 'cors', // if you need to turn off CORS, use no-cors
+    headers: {    // any HTTP headers you want can go here
+      'accept': 'application/json',
+      'connection': 'keep-alive'
+    }
+  }
   // make the HTTP/HTTPS call:
   fetch('https://dweet.io/get/dweets/for/my-thing-name')
     .then(response => response.json())  // convert response to JSON
@@ -12,7 +20,8 @@ function fetchText() {
   let params = {
     mode: 'cors', // if you need to turn off CORS, use no-cors
     headers: {    // any HTTP headers you want can go here
-      'accept': 'application/text'
+      'accept': 'application/text',
+      'connection': 'keep-alive'
     }
   }
   // make the HTTP/S call:
