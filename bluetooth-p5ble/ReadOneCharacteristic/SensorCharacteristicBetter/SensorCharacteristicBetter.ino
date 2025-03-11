@@ -11,7 +11,6 @@
 */
 
 #include <ArduinoBLE.h>
-
 const int ledPin = LED_BUILTIN; // set ledPin to on-board LED
 
 // create service:
@@ -24,7 +23,7 @@ int sensorPin = A0;    // select the input pin for the potentiometer
 
 void setup() {
   Serial.begin(9600);
-  while (!Serial);
+  if (!Serial) delay(3000);
 
   pinMode(ledPin, OUTPUT); // use the LED as an output
 
