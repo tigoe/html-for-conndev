@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Fetch Sensor Example </title>
+</head>
+
+<body>
+  <h1>Fetch Data Example</h1>
+  <p>The page demonstrates JavaScript's fetch() function. Fetch uses JavaScript's async/await interface.</p>
+  <p>This page fetches the data from your data URL once every ten seconds. It assumes your data is a text file, with one
+    JSON object in each line. If you click "Display Data" it will display all the data obtained as of the last fetch.
+    You can change the URL at any time. </p>
+  <h2>How Fetch Works</h2>
+  <p>Fetch works by
+    making an HTTP request in a <a
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>, then
+    awaiting a response. A successful response returns a <a
+      href="https://developer.mozilla.org/en-US/docs/Web/API/Response">Response</a> object. You usually convert the
+    response to the data form you want, and then use that result in your script.</p>
+
+  <p>You might also need to catch an error if
+    there is one, or you might need to set some parameters, like the headers of your HTTP request, or whether or not to
+    permit CORS requests, and so forth. You can see examples of these in this page's script, which is embedded in the
+    HTML.
+  </p>
+  <p>
+    For more info, see
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">MDN's documentation on using
+      fetch.</a>
+  </p>
+    <h2>The Action</h2>
+  Enter the URL of your JSON data here:
+  <input type="text" id="dataURL" size="75" onchange="fetchData()"><br>
+  <input type="button" value="Display Data" onClick="showData();">
+  <p id="count">Data count: 0</p>
+  <div id="result"></div>
+</body>
+<script src="script.js"></script>
+
+</html>
