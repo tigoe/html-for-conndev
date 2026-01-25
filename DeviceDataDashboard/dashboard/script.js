@@ -6,6 +6,7 @@
   Based on my fetch example (https://tigoe.github.io/html-for-conndev/fetch/). 
 
   created 30 Dec 2022
+  updated 25 Jan 2026
   by Tom Igoe
 */
 
@@ -21,7 +22,7 @@ function fetchText() {
   let params = {
     mode: 'cors', // if you need to turn off CORS, use no-cors
     headers: {    // any HTTP headers you want can go here
-      'accept': 'application/text'
+      'accept': 'text/json'
     }
   }
   // make the HTTP/S call:
@@ -33,7 +34,18 @@ function fetchText() {
 
 // function to call when you've got something to display:
 function getResponse(data) {
-  document.getElementById('result').innerHTML = data;
+  // split the text on the newlines:
+  let lines = data.split('\n');
+  // clear the result div of the HTML doc:
+  document.getElementById('result').innerHTML = "";
+  // iterate over the text, adding each line to the div:
+
+  for (let thisLine = 0; thisLine < lines.length; thisLine++) {
+    // get each line, add a break tag, and add it to the result div:
+     document.getElementById('result').innerHTML += lines[thisLine] + "<br>";
+  }
+
+
 }
 
 // This is a listener for the page to load.
