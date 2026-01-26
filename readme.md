@@ -278,15 +278,17 @@ MDN maintains a list of all [Web APIs](https://developer.mozilla.org/en-US/docs/
 If the device that your browser is on has geolocation capability, it can be accessed via the [Geolocation API](https://developer.mozilla.org/en-US/docs/Web/API). Here is a [geolocation example](geolocation/).
 
 ### Sensors
-The W3C defines a number of different sensor APIs to access the various sensors available on mobile devices. the Sensor APIs only work when served via HTTPS, so you might want to test on a platform-as-a-service like [glitch.com](http://www.glitch.com).  The sensors are not available on all devices, so you need to check to see whether they're available and accessible first. The sensors in the API are:
+The W3C defines a number of different sensor APIs to access the various sensors available on mobile devices. the Sensor APIs only work when served via HTTPS, so you might want to test on a server which supports that.  The sensors are not available on all devices, so you need to check to see whether they're available and accessible first. The sensors in the API are:
 * Accelerometer
 * AmbientLightSensor
 * Gyroscope
 * LinearAccelerationSensor
 * Magnetometer
 * OrientationSensor
+* Microphone
+* Camera
 
-Here's an example that runs all the sensors: [sensor tests](sensor-tests) (also hosted on [Glitch](https://sensor-tests.glitch.me/))
+Here's an example that runs all the sensors: [sensor tests](sensor-tests).
 
 Useful links:
 * [Sensor](https://developer.mozilla.org/en-US/docs/Web/API/Sensor)
@@ -324,3 +326,7 @@ Useful links:
 ### WebNFC
 Useful links:
 * [WebNFC](https://w3c.github.io/web-nfc/)
+
+## Web Audio API
+
+* [This example](audio-in)  does FFT analysis on the sound coming from the microphone
