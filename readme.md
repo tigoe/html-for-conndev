@@ -327,6 +327,7 @@ Useful links:
 Useful links:
 * [WebNFC](https://w3c.github.io/web-nfc/)
 
-## Web Audio API
-
+### Web Audio API
+Useful links:
+* [Web Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API)
 * [This example](audio-in)  does FFT analysis on the sound coming from the microphone
