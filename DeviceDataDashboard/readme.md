@@ -108,7 +108,7 @@ $ nc -l 8080 | tee log.json &
 
 ## Reading A File in JavaScript with Fetch
 
-JavaScript's `fetch()` command allows you to make HTTP calls from within a page, to add content to the page. If you've never used fetch before, [this example](fetch) may be helpful.  MDN has a [page describing the fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) as well. [This script](https://github.com/tigoe/html-for-conndev/blob/main/DeviceDataDashboard/dashboard/script.js) makes a fetch call every 5 seconds, retreiving  the `log.json` file and displaying it in a div of the HTML page in which the script is embedded. 
+JavaScript's `fetch()` command allows you to make HTTP calls from within a page, to add content to the page. If you've never used fetch before, [this example](../fetch) may be helpful.  MDN has a [page describing the fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) as well. [This script](https://github.com/tigoe/html-for-conndev/blob/main/DeviceDataDashboard/dashboard/script.js) makes a fetch call every 5 seconds, retreiving  the `log.json` file and displaying it in a div of the HTML page in which the script is embedded. 
 
 To see this whole system in action:
 
