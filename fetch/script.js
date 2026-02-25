@@ -9,7 +9,7 @@ function fetchJSON() {
     }
   }
   // make the HTTP/HTTPS call:
-  fetch('https://dweet.io/get/dweets/for/my-thing-name')
+  fetch('data.json')
     .then(response => response.json())  // convert response to JSON
     .then(data => getResponse(JSON.stringify(data)))   // get the body of the response
     .catch(error => getResponse(error));// if there is an error
