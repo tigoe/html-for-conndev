@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Time-Based QR Code Generator</title>
+  <script src="https://unpkg.com/qrcode-generator@1.4.4/qrcode.js"></script>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Time-Based QR Code Example</h1>
+  <p>This page will display a QR code of whatever text you type into the box below. The QR code will update every five seconds with the time string attached. This 
+    makes it a time-dependent QR code, like you see on some ticketing apps.</p>
+  <p>To see the code, scan it on your mobile device after it appears.</p>
+  <p>Enter some text here to generate a QR code:</p>
+  <input type="text" id="textField" onchange="getQrCode(this.value);">
+  <p>   
+  <div id='qrCode'>
+  </p> 
+
+</body>
+</html>
